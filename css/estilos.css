@@ -285,7 +285,7 @@ footer {
 
 .parallax {
     height: 300px;
-    background-image: url('file:///C:/Users/Missael%20Ching%20Mendez/OneDrive/Documentos/Templated/views/img/pixie-11.JPEG');
+    background-image: url('../img/pixie-11.JPEG');
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
