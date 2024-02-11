@@ -1,0 +1,346 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    /* o cualquier otro color de fondo que prefieras */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand a {
+    margin-left: 100px;
+    /* Ajusta este valor para aumentar el margen izquierdo */
+    text-decoration: none;
+    color: #7e1414;
+    font-size: 24px;
+    font-family: 'Glot Round Medium';
+    /* Helvetica como primera opción, Arial como backup, y sans-serif como genérico */
+    /* otros estilos que necesites */
+}
+
+.navbar-icons {
+    margin-right: 100px;
+    /* Ajusta este valor para aumentar el margen derecho */
+}
+
+.icon-book,
+.icon-sandwich {
+    font-size: 24px;
+    /* Ajusta el tamaño según necesites */
+    text-decoration: none;
+    color: #000;
+    margin-right: 30px;
+    /* Ajusta el margen entre los iconos si es necesario */
+    /* otros estilos que necesites */
+}
+
+
+
+.side-nav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.95);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    z-index: 1000; /* Asegúrate de que esto sea mayor que el z-index de cualquier otro elemento en la página */
+    /* Centrar el contenido horizontalmente */
+}
+
+.side-nav a {
+    padding: 15px 0;
+    /* Ajuste para centrar verticalmente */
+    text-decoration: none;
+    font-size: 22px;
+    color: #333;
+    display: block;
+    transition: 0.3s;
+}
+
+
+.side-nav a:hover {
+    color: #f1f1f1;
+    background-color: #555;
+}
+
+.side-nav .btn-close {
+    position: absolute;
+    top: 20px;
+    /* Posición del botón de cierre */
+    right: 45px;
+    /* Posición del botón de cierre */
+    font-size: 36px;
+    cursor: pointer;
+}
+
+.main-header {
+    width: 100%;
+    display: block;
+}
+
+.main-header img {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* Asegura que la imagen se ajuste al ancho del contenedor */
+}
+
+.site-footer {
+    background-color: #f0eeee;
+    color: rgb(1, 1, 1);
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-section {
+    flex: 1;
+}
+
+.social-icon {
+    margin: 0 8px;
+}
+
+footer {
+    font-size: 10px;
+    /* Cambia este valor al tamaño de letra que prefieras */
+    height: 13px;
+    /* Cambia este valor a la altura que prefieras */
+    color: white;
+    /* Este es para el color del texto, ajusta según tu diseño */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    z-index: 5; /* Menor que el contenido para que se muestre debajo del formulario */
+    width: 100%;
+}
+
+.gallery-container h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.gallery-item {
+    width: calc(33.333% - 20px);
+    /* Ajusta esto para 3 imágenes por fila con gap de 20px */
+    margin-bottom: 20px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.text {
+    text-align: center;
+}
+
+.text h2 {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.text p {
+    margin: 0;
+    font-size: 16px;
+}
+
+.contact-container {
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+    z-index: 2;
+    /* Mayor que el z-index del parallax para que aparezca por encima */
+    position: relative;
+    /* También necesita una posición para que z-index funcione */
+    background: #fff;
+    /* O cualquier otro color de fondo que prefieras */
+    padding: 20px;
+}
+
+.contact-container h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.contact-info {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.contact-form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #5c5c5c;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #434343;
+}
+
+@media (max-width: 768px) {
+    .contact-container {
+        width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery-item {
+        width: calc(50% - 20px);
+        /* Ajusta para 2 imágenes por fila en tabletas */
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-item {
+        width: 100%;
+        /* Ajusta para 1 imagen por fila en móviles */
+    }
+}
+
+/* Media query para tablets */
+@media (max-width: 768px) {
+    .navbar-brand a {
+        margin-left: 50px;
+        /* Margen reducido para tablet */
+    }
+
+    .navbar-icons {
+        margin-right: 50px;
+        /* Margen reducido para tablet */
+    }
+
+    .icon-book,
+    .icon-sandwich {
+        font-size: 20px;
+        /* Tamaño de fuente reducido para tablet */
+        margin-right: 20px;
+        /* Margen reducido entre iconos para tablet */
+    }
+
+    .side-nav a {
+        font-size: 18px;
+        /* Tamaño de fuente reducido para tablet */
+    }
+
+    .site-footer {
+        padding: 5px 0;
+        /* Padding reducido para tablet */
+    }
+
+    footer {
+        font-size: 8px;
+        /* Tamaño de fuente reducido para tablet */
+        height: auto;
+        /* Altura automática para ajustarse al contenido interno */
+    }
+}
+
+.parallax {
+    height: 300px;
+    background-image: url('file:///C:/Users/Missael%20Ching%20Mendez/OneDrive/Documentos/Templated/views/img/pixie-11.JPEG');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+    position: relative;
+}
+
+
+/* Media query para teléfonos móviles */
+@media (max-width: 480px) {
+    .navbar-brand a {
+        margin-left: 20px;
+        /* Margen aún más reducido para móviles */
+    }
+
+    .navbar-icons {
+        margin-right: 20px;
+        /* Margen aún más reducido para móviles */
+    }
+
+    .icon-book,
+    .icon-sandwich {
+        font-size: 16px;
+        /* Tamaño de fuente aún más reducido para móviles */
+        margin-right: 15px;
+        /* Margen aún más reducido entre iconos para móviles */
+    }
+
+    .side-nav {
+        padding-top: 20px;
+        /* Padding superior reducido para móviles */
+    }
+
+    .side-nav a {
+        font-size: 16px;
+        /* Tamaño de fuente aún más reducido para móviles */
+    }
+
+    .site-footer {
+        flex-direction: column;
+        /* Los elementos del footer se apilan verticalmente */
+        padding: 20px 0;
+        /* Padding aumentado para mejorar la legibilidad */
+    }
+
+    .footer-section {
+        margin-bottom: 10px;
+        /* Añade espacio entre secciones del footer */
+    }
+
+    footer {
+        font-size: 8px;
+        /* Tamaño de fuente reducido para móviles */
+        height: auto;
+        /* Altura automática para ajustarse al contenido interno */
+    }
+}
