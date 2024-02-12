@@ -33,15 +33,15 @@
             </div>
             <div class="contact-form">
                 <form id="contact-form">
-                    <input type="text" id="name" name="name" placeholder="Tu nombre" required>
-                    <input type="email" id="email" name="email" placeholder="Tu correo electrónico" required>
-                    <textarea name="message" id="message" placeholder="Tu mensaje" required></textarea>
+                    <input type="text" id="name" name="from_name" placeholder="Tu nombre" required>
+                    <input type="email" id="email" name="from_email" placeholder="Tu correo electrónico" required>
+                    <textarea id="message" name="message_html" placeholder="Tu mensaje" required></textarea>
                     <button type="submit">Enviar Mensaje</button>
                 </form>
             </div>
         </div>
-    <br>
-    <br>
+        <br>
+        <br>
     </div>
 
     <!-- Footer -->
@@ -77,31 +77,31 @@
     <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
     <script type="text/javascript">
         emailjs.init("72UWt7VN90Evylsl_");
-      </script>
-      
+    </script>
+
     <script>
-        
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
-          event.preventDefault();
-          
-          // Validación simple (podrías mejorarla)
-          var name = document.getElementById('name').value;
-          var email = document.getElementById('email').value;
-          var message = document.getElementById('message').value;
-          
-          if(name && email && message) {
-            // Aquí es donde integrarías EmailJS o tu servicio de preferencia
-            emailjs.sendForm('service_b5m3a2x', 'template_1ks81ae', this)
-              .then(function() {
-                alert('Mensaje enviado con éxito!');
-              }, function(error) {
-                alert('Ocurrió un error al enviar el mensaje: ' + JSON.stringify(error));
-              });
-          } else {
-            alert('Por favor completa todos los campos.');
-          }
+
+        document.getElementById('contact-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Validación simple (podrías mejorarla)
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var message = document.getElementById('message').value;
+
+            if (name && email && message) {
+                // Aquí es donde integrarías EmailJS o tu servicio de preferencia
+                emailjs.sendForm('service_b5m3a2x', 'template_1ks81ae', this)
+                    .then(function () {
+                        alert('Mensaje enviado con éxito!');
+                    }, function (error) {
+                        alert('Ocurrió un error al enviar el mensaje: ' + JSON.stringify(error));
+                    });
+            } else {
+                alert('Por favor completa todos los campos.');
+            }
         });
-      </script>
+    </script>
 </body>
 
 </html>
