@@ -92,7 +92,7 @@
             if (name && email && message) {
                 // Aquí es donde integrarías EmailJS o tu servicio de preferencia
                 console.log(name, email , message)
-                emailjs.sendForm('service_b5m3a2x', 'template_1ks81ae', this)
+                emailjs.sendForm('service_b5m3a2x', 'template_1ks81ae', 'contact-form')
                     .then(function () {
                         alert('Mensaje enviado con éxito!');
                     }, function (error) {
