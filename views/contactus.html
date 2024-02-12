@@ -32,10 +32,10 @@
                     en contacto contigo lo antes posible.</p>
             </div>
             <div class="contact-form">
-                <form action="destino_del_formulario.php" method="post">
-                    <input type="text" name="nombre" placeholder="Tu nombre" required>
-                    <input type="email" name="email" placeholder="Tu correo electrónico" required>
-                    <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
+                <form id="contact-form">
+                    <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+                    <input type="email" id="email" name="email" placeholder="Tu correo electrónico" required>
+                    <textarea name="message" id="message" placeholder="Tu mensaje" required></textarea>
                     <button type="submit">Enviar Mensaje</button>
                 </form>
             </div>
@@ -73,8 +73,35 @@
         <a href="../views/contactus.html">Contacto</a>
         <!-- Más enlaces si es necesario -->
     </div>
-
     <script src="../js/script.js"></script>
+    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+    <script type="text/javascript">
+        emailjs.init("72UWt7VN90Evylsl_");
+      </script>
+      
+    <script>
+        
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+          event.preventDefault();
+          
+          // Validación simple (podrías mejorarla)
+          var name = document.getElementById('name').value;
+          var email = document.getElementById('email').value;
+          var message = document.getElementById('message').value;
+          
+          if(name && email && message) {
+            // Aquí es donde integrarías EmailJS o tu servicio de preferencia
+            emailjs.sendForm('service_b5m3a2x', 'template_1ks81ae', this)
+              .then(function() {
+                alert('Mensaje enviado con éxito!');
+              }, function(error) {
+                alert('Ocurrió un error al enviar el mensaje: ' + JSON.stringify(error));
+              });
+          } else {
+            alert('Por favor completa todos los campos.');
+          }
+        });
+      </script>
 </body>
 
 </html>
