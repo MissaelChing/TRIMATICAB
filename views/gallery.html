@@ -26,42 +26,42 @@
             <h1>Galería</h1>
             <div class="gallery">
                 <div class="gallery-item">
-                    <img src="../img/CATRINA 2022-1.jpg" alt="Descripción">
+                    <img src="../img/CATRINA 2022-1.jpg" onclick="openLightbox('../img/CATRINA 2022-1.jpg')" alt="Descripción">
                     <div class="text">
                         <h2>Catrina </h2>
                         <p>2023 (serie)</p>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="../img/CATRINA 2023-3.jpg" alt="Descripción">
+                    <img src="https://res.cloudinary.com/dbixvufby/image/upload/f_auto,q_auto/v1/trimatica/jp0fovgqlqgchh4utm3c" onclick="openLightbox('https://res.cloudinary.com/dbixvufby/image/upload/f_auto,q_auto/v1/trimatica/jp0fovgqlqgchh4utm3c')" alt="Descripción">
                     <div class="text">
                         <h2>Stations of the Cross</h2>
                         <p>2023 (serie)</p>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="../img/DSC_0854 copia.jpg" alt="Descripción">
+                    <img src="https://res.cloudinary.com/dbixvufby/image/upload/f_auto,q_auto/v1/trimatica/vxpsnq5nqe0tuuqbmjsr" onclick="openLightbox('https://res.cloudinary.com/dbixvufby/image/upload/f_auto,q_auto/v1/trimatica/vxpsnq5nqe0tuuqbmjsr')" alt="Descripción">
                     <div class="text">
                         <h2>Stations of the Cross</h2>
                         <p>2023 (serie)</p>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="../img/5ta The palm-4.jpg" alt="Descripción">
+                    <img src="https://res.cloudinary.com/dbixvufby/image/upload/f_auto,q_auto/v1/trimatica/vnklbbcfr7oow9xhya4v" onclick="openLightbox('https://res.cloudinary.com/dbixvufby/image/upload/f_auto,q_auto/v1/trimatica/vnklbbcfr7oow9xhya4v')" alt="Descripción">
                     <div class="text">
                         <h2>Stations of the Cross</h2>
                         <p>2023 (serie)</p>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="../img/PERLAS-36.jpg" alt="Descripción">
+                    <img src="https://res.cloudinary.com/dbixvufby/image/upload/f_auto,q_auto/v1/trimatica/fvs905n3nh8gmnvism40" onclick="openLightbox('https://res.cloudinary.com/dbixvufby/image/upload/f_auto,q_auto/v1/trimatica/fvs905n3nh8gmnvism40')" alt="Descripción">
                     <div class="text">
                         <h2>Stations of the Cross</h2>
                         <p>2023 (serie)</p>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="../img/JUANCA-9ok.jpg" alt="Descripción">
+                    <img src="https://res.cloudinary.com/dbixvufby/image/upload/f_auto,q_auto/v1/trimatica/drx3hrnff6ipxavppsgc"  onclick="openLightbox('https://res.cloudinary.com/dbixvufby/image/upload/f_auto,q_auto/v1/trimatica/drx3hrnff6ipxavppsgc')" alt="Descripción">
                     <div class="text">
                         <h2>Stations of the Cross</h2>
                         <p>2023 (serie)</p>
@@ -71,7 +71,10 @@
             </div>
         </div>
     </div>
-
+    <div id="lightbox" class="lightbox">
+        <span class="close-btn" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="" alt="Imagen en lightbox">
+    </div>
     <!-- Footer -->
     <footer class="site-footer">
         <div class="footer-section">

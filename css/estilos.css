@@ -62,19 +62,19 @@ body {
 }
 
 .side-nav a {
-    padding: 15px 0;
-    /* Ajuste para centrar verticalmente */
+    padding: 15px 10px; /* Reducir el padding horizontal */
+    margin: 5px 0; /* Agregar margen para separar los botones */
     text-decoration: none;
     font-size: 22px;
     color: #333;
     display: block;
     transition: 0.3s;
+    border-radius: 5px; /* Agregar bordes redondeados */
 }
-
 
 .side-nav a:hover {
     color: #f1f1f1;
-    background-color: #555;
+    background-color: rgb(180, 180, 180);
 }
 
 .side-nav .btn-close {
@@ -226,6 +226,34 @@ footer {
 .contact-form button:hover {
     background-color: #434343;
 }
+
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+#lightbox-img {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+}
+
 
 @media (max-width: 768px) {
     .contact-container {

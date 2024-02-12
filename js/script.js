@@ -12,4 +12,16 @@ document.addEventListener('scroll', function() {
   
     parallaxElement.style.transform = 'translateY(' + scrollPosition * 0.5 + 'px)';
   });
-  
+  // Función para abrir el lightbox con la imagen seleccionada
+function openLightbox(imgSrc) {
+    var lightbox = document.getElementById('lightbox');
+    var lightboxImg = document.getElementById('lightbox-img');
+    lightboxImg.src = imgSrc;
+    lightbox.style.display = 'flex';
+}
+
+// Función para cerrar el lightbox
+function closeLightbox() {
+    var lightbox = document.getElementById('lightbox');
+    lightbox.style.display = 'none';
+}
