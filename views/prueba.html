@@ -13,7 +13,7 @@
 
   @keyframes flicker {
     0%, 100% { opacity: 0; }
-    50% { opacity: 1; }
+    50% { opacity: 0.8; }
   }
 
   body {
@@ -48,11 +48,8 @@
   .light {
     position: absolute;
     border-radius: 50%;
-    background: white;
     opacity: 0; /* Start invisible */
-    animation: flicker 2s infinite alternate;
-    width: 40px; /* Fixed size for bigger light circles */
-    height: 40px;
+    animation: flicker 5s infinite alternate;
   }
 </style>
 </head>
@@ -66,13 +63,16 @@
     // Función para generar luces
     function generateLights() {
       var lightsContainer = document.querySelector('.lights-container');
-      for (var i = 0; i < 20; i++) { // Genera 20 luces
+      var colors = ['#FFD700', '#FF8C00', '#1E90FF', '#32CD32', '#DC143C', '#4B0082']; // Colores de las luces
+      for (var i = 0; i < 30; i++) { // Aumenta el número de luces si es necesario
         var light = document.createElement('div');
         light.classList.add('light');
-        light.style.top = Math.random() * 100 + '%';
-        light.style.left = Math.random() * 100 + '%';
-        light.style.animationDelay = (Math.random() * 5) + 's'; // Retraso aleatorio de la animación
-        light.style.animationDuration = (Math.random() * 5 + 5) + 's'; // Duración aleatoria entre 5 y 10 segundos
+        light.style.width = light.style.height = (Math.random() * 100 + 50) + 'px'; // Tamaño aleatorio entre 50px y 150px
+        light.style.top = Math.random() * (100 - 10) + 5 + '%'; // Evita que las luces toquen los bordes
+        light.style.left = Math.random() * (100 - 10) + 5 + '%';
+        light.style.background = colors[Math.floor(Math.random() * colors.length)]; // Asigna un color aleatorio
+        light.style.animationDelay = (Math.random() * 3) + 's'; // Retraso aleatorio de la animación
+        light.style.animationDuration = (Math.random() * 2 + 3) + 's'; // Duración aleatoria entre 3 y 5 segundos
         lightsContainer.appendChild(light);
       }
     }
