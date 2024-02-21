@@ -37,6 +37,7 @@
     font-family: 'Arial', sans-serif;
     text-transform: uppercase;
     z-index: 2;
+    position: relative;
   }
 
   .fade-in {
@@ -86,7 +87,7 @@
       for (var i = 0; i < 20; i++) { // Genera 20 luces
         var light = document.createElement('div');
         light.classList.add('light');
-        light.style.width = light.style.height = (Math.random() * 10 + 5) + 'px'; // Tamaño aleatorio entre 5px y 15px
+        light.style.width = light.style.height = (Math.random() * 20 + 20) + 'px'; // Tamaño aleatorio entre 20px y 40px
         light.style.top = Math.random() * 100 + '%';
         light.style.left = Math.random() * 100 + '%';
         light.style.animationDelay = (Math.random() * 5) + 's'; // Retraso aleatorio de la animación
