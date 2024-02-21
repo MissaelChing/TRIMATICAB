@@ -179,8 +179,7 @@ footer {
 .contact-container {
     width: 80%;
     max-width: 800px;
-    margin: auto;
-    background: #fff;
+    margin: 0 auto;
     padding: 20px;
 }
 
@@ -195,6 +194,8 @@ footer {
 }
 
 .contact-form form {
+    display: flex;
+    flex-direction: column;
     gap: 10px;
 }
 
@@ -218,7 +219,7 @@ footer {
 
 .contact-form button:hover {
     background-color: #434343;
-}
+} 
 
 .lightbox {
     display: none;
