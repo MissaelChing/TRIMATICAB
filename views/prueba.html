@@ -15,6 +15,11 @@
     to { transform: translateY(0); }
   }
 
+  @keyframes flicker {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+  }
+
   body {
     margin: 0;
     height: 100vh;
@@ -31,6 +36,7 @@
     color: white;
     font-family: 'Arial', sans-serif;
     text-transform: uppercase;
+    z-index: 2;
   }
 
   .fade-in {
@@ -40,12 +46,31 @@
   .slide-up {
     animation: slideUp 3s ease forwards;
   }
+
+  .lights-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .light {
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+    opacity: 0; /* Start invisible */
+    animation: flicker 2s infinite alternate;
+  }
 </style>
 </head>
 <body>
-<div id="particles-js"></div>
+
+<div class="lights-container"></div>
 <div class="intro" id="trimaticaLogo">TRIMATICA</div>
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
 <script>
   window.onload = function() {
     var logo = document.getElementById('trimaticaLogo');
@@ -54,114 +79,25 @@
     setTimeout(function() {
       logo.classList.add('slide-up');
     }, 3000); // This starts the slide-up after the fade-in completes.
+
+    // Función para generar luces
+    function generateLights() {
+      var lightsContainer = document.querySelector('.lights-container');
+      for (var i = 0; i < 20; i++) { // Genera 20 luces
+        var light = document.createElement('div');
+        light.classList.add('light');
+        light.style.width = light.style.height = (Math.random() * 10 + 5) + 'px'; // Tamaño aleatorio entre 5px y 15px
+        light.style.top = Math.random() * 100 + '%';
+        light.style.left = Math.random() * 100 + '%';
+        light.style.animationDelay = (Math.random() * 5) + 's'; // Retraso aleatorio de la animación
+        light.style.animationDuration = (Math.random() * 5 + 5) + 's'; // Duración aleatoria entre 5 y 10 segundos
+        lightsContainer.appendChild(light);
+      }
+    }
+
+    generateLights(); // Llama a la función para generar las luces
   };
 </script>
-<script>
-  particlesJS("particles-js", {
-    "particles": {
-      "number": {
-        "value": 80,
-        "density": {
-          "enable": true,
-          "value_area": 800
-        }
-      },
-      "color": {
-        "value": "#ffffff"
-      },
-      "shape": {
-        "type": "circle",
-        "stroke": {
-          "width": 0,
-          "color": "#000000"
-        },
-        "polygon": {
-          "nb_sides": 5
-        },
-      },
-      "opacity": {
-        "value": 0.5,
-        "random": false,
-        "anim": {
-          "enable": false,
-          "speed": 1,
-          "opacity_min": 0.1,
-          "sync": false
-        }
-      },
-      "size": {
-        "value": 3,
-        "random": true,
-        "anim": {
-          "enable": false,
-          "speed": 40,
-          "size_min": 0.1,
-          "sync": false
-        }
-      },
-      "line_linked": {
-        "enable": true,
-        "distance": 150,
-        "color": "#ffffff",
-        "opacity": 0.4,
-        "width": 1
-      },
-      "move": {
-        "enable": true,
-        "speed": 6,
-        "direction": "none",
-        "random": false,
-        "straight": false,
-        "out_mode": "out",
-        "bounce": false,
-        "attract": {
-          "enable": false,
-          "rotateX": 600,
-          "rotateY": 1200
-        }
-      }
-    },
-    "interactivity": {
-      "detect_on": "canvas",
-      "events": {
-        "onhover": {
-          "enable": true,
-          "mode": "repulse"
-        },
-        "onclick": {
-          "enable": true,
-          "mode": "push"
-        },
-        "resize": true
-      },
-      "modes": {
-        "grab": {
-          "distance": 400,
-          "line_linked": {
-            "opacity": 1
-          }
-        },
-        "bubble": {
-          "distance": 400,
-          "size": 40,
-          "duration": 2,
-          "opacity": 8,
-          "speed": 3
-        },
-        "repulse": {
-          "distance": 200,
-          "duration": 0.4
-        },
-        "push": {
-          "particles_nb": 4
-        },
-        "remove": {
-          "particles_nb": 2
-        }
-      }
-    },
-    "retina_detect": true
-  });
-</script>
+
 </body>
 </html>
