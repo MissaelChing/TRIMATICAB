@@ -180,12 +180,8 @@ footer {
     width: 80%;
     max-width: 800px;
     margin: 0 auto;
-    z-index: 2;
-    /* Mayor que el z-index del parallax para que aparezca por encima */
     position: relative;
-    /* También necesita una posición para que z-index funcione */
     background: #fff;
-    /* O cualquier otro color de fondo que prefieras */
     padding: 20px;
 }
 
