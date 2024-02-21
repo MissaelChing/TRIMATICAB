@@ -179,8 +179,7 @@ footer {
 .contact-container {
     width: 80%;
     max-width: 800px;
-    margin: 0 auto;
-    position: relative;
+    margin: auto;
     background: #fff;
     padding: 20px;
 }
@@ -196,7 +195,6 @@ footer {
 }
 
 .contact-form form {
-    flex-direction: column;
     gap: 10px;
 }
 
