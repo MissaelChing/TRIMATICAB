@@ -177,16 +177,21 @@ footer {
 }
 
 .contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Esto centrará los elementos hijos horizontalmente */
     width: 80%;
     max-width: 800px;
     margin: 0 auto;
     z-index: 2;
-    /* Mayor que el z-index del parallax para que aparezca por encima */
     position: relative;
-    /* También necesita una posición para que z-index funcione */
     background: #fff;
-    /* O cualquier otro color de fondo que prefieras */
     padding: 20px;
+}
+
+.contact-form {
+    width: 100%; /* O cualquier ancho específico que prefieras */
+    max-width: 600px; /* O ajusta según la anchura máxima deseada para el formulario */
 }
 
 .contact-container h1 {
@@ -197,12 +202,6 @@ footer {
 .contact-info {
     text-align: center;
     margin-bottom: 20px;
-}
-
-.contact-form form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
 }
 
 .contact-form input,
