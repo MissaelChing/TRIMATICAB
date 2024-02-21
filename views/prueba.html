@@ -10,9 +10,9 @@
     to { opacity: 1; }
   }
 
-  @keyframes moveIn {
-    0% { transform: translateY(50px); }
-    100% { transform: translateY(0); }
+  @keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
   }
 
   body {
@@ -26,23 +26,35 @@
   }
 
   .intro {
-    text-align: center;
+    opacity: 0;
+    font-size: 5em;
     color: white;
     font-family: 'Arial', sans-serif;
-    opacity: 0;
-    animation: fadeIn 2s ease forwards, moveIn 1s ease forwards;
-    animation-delay: 1s;
+    text-transform: uppercase;
+  }
+
+  .fade-in {
+    animation: fadeIn 3s ease forwards;
+  }
+
+  .slide-up {
+    animation: slideUp 3s ease forwards;
   }
 </style>
 </head>
 <body>
 
-<div class="intro">
-  <h1>TRIMATICA</h1>
-</div>
+<div class="intro" id="trimaticaLogo">TRIMATICA</div>
 
 <script>
-  // Aquí puedes agregar JavaScript si necesitas controlar la animación con más detalle
+  window.onload = function() {
+    var logo = document.getElementById('trimaticaLogo');
+    logo.classList.add('fade-in');
+
+    setTimeout(function() {
+      logo.classList.add('slide-up');
+    }, 3000); // This starts the slide-up after the fade-in completes.
+  };
 </script>
 
 </body>
