@@ -27,13 +27,23 @@
   }
 
   .intro {
-    opacity: 0;
-    font-size: 5em;
-    color: white;
-    font-family: 'Arial', sans-serif;
-    text-transform: uppercase;
-    animation: fadeInOut 6s ease forwards;
-  }
+  width: 300px; /* Ancho del logo */
+  height: 150px; /* Alto del logo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.intro img {
+  width: 100%; /* Hace que la imagen del logo se ajuste al contenedor .intro */
+  height: auto; /* Mantiene la relación de aspecto de la imagen */
+}
+
 
   .lights-container {
     position: absolute;
