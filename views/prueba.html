@@ -5,14 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TRIMATICA Intro</title>
 <style>
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  @keyframes slideUp {
-    from { transform: translateY(100%); }
-    to { transform: translateY(0); }
+  @keyframes fadeInOut {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
   }
 
   @keyframes flicker {
@@ -36,16 +32,7 @@
     color: white;
     font-family: 'Arial', sans-serif;
     text-transform: uppercase;
-    z-index: 2;
-    position: relative;
-  }
-
-  .fade-in {
-    animation: fadeIn 3s ease forwards;
-  }
-
-  .slide-up {
-    animation: slideUp 3s ease forwards;
+    animation: fadeInOut 6s ease forwards;
   }
 
   .lights-container {
@@ -64,6 +51,8 @@
     background: white;
     opacity: 0; /* Start invisible */
     animation: flicker 2s infinite alternate;
+    width: 40px; /* Fixed size for bigger light circles */
+    height: 40px;
   }
 </style>
 </head>
@@ -74,20 +63,12 @@
 
 <script>
   window.onload = function() {
-    var logo = document.getElementById('trimaticaLogo');
-    logo.classList.add('fade-in');
-
-    setTimeout(function() {
-      logo.classList.add('slide-up');
-    }, 3000); // This starts the slide-up after the fade-in completes.
-
     // Función para generar luces
     function generateLights() {
       var lightsContainer = document.querySelector('.lights-container');
       for (var i = 0; i < 20; i++) { // Genera 20 luces
         var light = document.createElement('div');
         light.classList.add('light');
-        light.style.width = light.style.height = (Math.random() * 20 + 20) + 'px'; // Tamaño aleatorio entre 20px y 40px
         light.style.top = Math.random() * 100 + '%';
         light.style.left = Math.random() * 100 + '%';
         light.style.animationDelay = (Math.random() * 5) + 's'; // Retraso aleatorio de la animación
