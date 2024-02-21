@@ -179,18 +179,12 @@ footer {
 .contact-container {
     width: 80%;
     max-width: 800px;
-    margin: 0 auto;
+    margin: 40px auto; /* Añade un margen superior e inferior para separarlo del contenido circundante */
+    position: relative;
+    background: #fff; /* Color de fondo de la tarjeta */
     padding: 20px;
-}
-
-.contact-container h1 {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.contact-info {
-    text-align: center;
-    margin-bottom: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Sombra para efecto 3D */
+    border-radius: 10px; /* Bordes redondeados para la tarjeta */
 }
 
 .contact-form form {
@@ -203,23 +197,23 @@ footer {
 .contact-form textarea {
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    border: 1px solid #ddd; /* Línea más sutil para los inputs */
+    border-radius: 5px; /* Bordes redondeados para los inputs y textarea */
 }
 
 .contact-form button {
     padding: 10px 20px;
     border: none;
-    border-radius: 5px;
-    background-color: #5c5c5c;
+    border-radius: 5px; /* Bordes redondeados para el botón */
+    background-color: #5c5c5c; /* Color de fondo para el botón */
     color: white;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .contact-form button:hover {
-    background-color: #434343;
-} 
+    background-color: #434343; /* Color de fondo del botón al pasar el mouse */
+}
 
 .lightbox {
     display: none;
