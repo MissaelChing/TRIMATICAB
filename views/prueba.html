@@ -26,22 +26,25 @@
     overflow: hidden;
   }
 
-  .intro {
-  width: 300px; /* Ancho del logo */
-  height: 150px; /* Alto del logo */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.intro {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 2;
+  z-index: 2; /* Asegura que el logo esté sobre las luces */
 }
 
 .intro img {
-  width: 100%; /* Hace que la imagen del logo se ajuste al contenedor .intro */
-  height: auto; /* Mantiene la relación de aspecto de la imagen */
+  opacity: 0; /* Inicia la imagen completamente transparente */
+  animation: fadeInOut 6s ease forwards; /* Aplica la animación de desvanecimiento */
+  width: 300px; /* Ajusta según el tamaño de tu imagen */
+  height: auto; /* Mantiene la proporción de la imagen */
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
 }
 
 
