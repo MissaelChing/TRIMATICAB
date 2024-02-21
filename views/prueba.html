@@ -64,12 +64,22 @@
     function generateLights() {
       var lightsContainer = document.querySelector('.lights-container');
       var colors = ['#FFD700', '#FF8C00', '#1E90FF', '#32CD32', '#DC143C', '#4B0082']; // Colores de las luces
-      for (var i = 0; i < 30; i++) { // Aumenta el número de luces si es necesario
+
+      // Dimensiones estimadas del área del logo para evitar la generación de luces
+      var logoArea = {
+        width: 30, // Ancho del logo en porcentaje del ancho total de la pantalla
+        height: 20, // Alto del logo en porcentaje del alto total de la pantalla
+      };
+
+      for (var i = 0; i < 30; i++) {
         var light = document.createElement('div');
         light.classList.add('light');
         light.style.width = light.style.height = (Math.random() * 100 + 50) + 'px'; // Tamaño aleatorio entre 50px y 150px
-        light.style.top = Math.random() * (100 - 10) + 5 + '%'; // Evita que las luces toquen los bordes
-        light.style.left = Math.random() * (100 - 10) + 5 + '%';
+
+        var lightPosition = getLightPosition(logoArea);
+        light.style.top = lightPosition.top + '%';
+        light.style.left = lightPosition.left + '%';
+
         light.style.background = colors[Math.floor(Math.random() * colors.length)]; // Asigna un color aleatorio
         light.style.animationDelay = (Math.random() * 3) + 's'; // Retraso aleatorio de la animación
         light.style.animationDuration = (Math.random() * 2 + 3) + 's'; // Duración aleatoria entre 3 y 5 segundos
@@ -77,9 +87,27 @@
       }
     }
 
+    // Función para obtener una posición válida para las luces fuera del área del logo
+    function getLightPosition(logoArea) {
+      var position = {};
+      var minX = 50 - logoArea.width / 2;
+      var maxX = 50 + logoArea.width / 2;
+      var minY = 50 - logoArea.height / 2;
+      var maxY = 50 + logoArea.height / 2;
+
+      // Genera una posición hasta que esté fuera del área definida para el logo
+      do {
+        position.top = Math.random() * 100;
+        position.left = Math.random() * 100;
+      } while (position.left > minX && position.left < maxX && position.top > minY && position.top < maxY);
+
+      return position;
+    }
+
     generateLights(); // Llama a la función para generar las luces
   };
 </script>
+
 
 </body>
 </html>
