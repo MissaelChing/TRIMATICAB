@@ -65,6 +65,17 @@
   overflow: hidden; /* Asegura que el pseudo-elemento se recorte según la forma del triángulo */
   position: relative; /* Posicionamiento relativo para el pseudo-elemento */
 }
+.light::after {
+  content: '';
+  position: absolute;
+  top: -50%; /* Extiende el pseudo-elemento más allá de los límites del triángulo */
+  left: -50%;
+  width: 200%; /* Hace que el pseudo-elemento sea más grande que el triángulo */
+  height: 200%;
+  background: inherit; /* Hereda el color de fondo del triángulo */
+  filter: blur(8px); /* Ajusta el nivel de desenfoque según sea necesario */
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%); /* Mantiene la forma triangular */
+}
 
 @keyframes growAndFade {
   0%, 100% {
