@@ -56,15 +56,12 @@
 
 .light {
   position: absolute;
-  width: 0; /* Ajusta a 0 ya que el triángulo se formará con los bordes */
-  height: 0; 
+  width: 0;
+  height: 0;
   opacity: 0; /* Inicia invisible */
   animation: growAndFade 5s infinite alternate;
-  background: transparent; /* Fondo transparente, el color vendrá de los bordes */
-  clip-path: polygon(50% 0%, 0% 100%, 100% 100%); /* Forma de triángulo */
-  overflow: hidden; /* Asegura que el pseudo-elemento se recorte según la forma del triángulo */
-  position: relative; /* Posicionamiento relativo para el pseudo-elemento */
 }
+
 .light::after {
   content: '';
   position: absolute;
