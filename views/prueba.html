@@ -65,13 +65,13 @@
 @keyframes growFadeAndBlur {
   0%, 100% {
     opacity: 0;
-    transform: scale(0.5); /* Empieza más pequeño */
-    filter: blur(8px); /* Empieza con más desenfoque */
+    transform: scale(0.5); /* Comienza más pequeño */
+    filter: blur(8px); /* Comienza con más desenfoque */
   }
   50% {
     opacity: 1;
-    transform: scale(1); /* Llega a su tamaño normal */
-    filter: blur(0px); /* Sin desenfoque */
+    transform: scale(1.5); /* Crece en su punto más visible */
+    filter: blur(0); /* Sin desenfoque en el punto más visible */
   }
 }
 
@@ -80,15 +80,11 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 0;
-  height: 0;
   border-left: 40px solid transparent;
   border-right: 40px solid transparent;
   border-bottom: 80px solid; /* El color se establecerá dinámicamente desde JS */
-  animation: growFadeAndBlur 5s infinite alternate; /* Aplica la animación aquí */
+  animation: growFadeAndBlur 5s infinite alternate; /* Asegúrate de que esta animación esté correctamente referenciada */
 }
-
-
 
   @keyframes flicker {
     0%, 100% { opacity: 0; }
@@ -130,15 +126,16 @@
       const lightsCount = window.innerWidth <= 768 ? 20 : 70;
 
       for (let i = 0; i < lightsCount; i++) {
-        const light = document.createElement('div');
-        light.classList.add('light');
-       light.style.borderLeft = `40px solid transparent`; // Ajusta el tamaño para controlar la base del triángulo
-light.style.borderRight = `40px solid transparent`; // Igual que borderLeft
-light.style.borderBottom = `80px solid ${colors[Math.floor(Math.random() * colors.length)]}`; // El color se aplica aquí
-       light.style.top = `${Math.random() * 100}%`;
-light.style.left = `${Math.random() * 100}%`;
+       // Dentro de generateLights()
+const light = document.createElement('div');
+light.classList.add('light');
+light.style.borderLeft = '40px solid transparent';
+light.style.borderRight = '40px solid transparent';
+light.style.borderBottom = '80px solid ' + colors[Math.floor(Math.random() * colors.length)];
+light.style.top = Math.random() * 100 + '%';
+light.style.left = Math.random() * 100 + '%';
+lightsContainer.appendChild(light);
 
-        lightsContainer.appendChild(light);
       }
     }
 
