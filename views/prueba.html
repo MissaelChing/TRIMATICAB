@@ -5,15 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TRIMATICA Intro</title>
 <style>
-  @keyframes blurFadeInOut {
-    0%, 100% {
-      filter: blur(5px);
-      opacity: 0;
-    }
-    50% {
-      filter: blur(0);
-      opacity: 1;
-    }
+  @keyframes fadeInOut {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+  @keyframes flicker {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 0.8; }
   }
 
   body {
@@ -27,88 +27,61 @@
   }
 
   .intro {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .intro img {
-    max-width: 90%;
-    max-height: 50vh;
-    filter: blur(5px);
     opacity: 0;
-    animation: blurFadeInOut 6s ease forwards;
+    font-size: 5em;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    text-transform: uppercase;
+    animation: fadeInOut 6s ease forwards;
   }
 
-  @media (max-width: 600px) {
-    .intro img {
-      max-width: 80%;
-      max-height: 30vh;
-    }
+  .lights-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .light {
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+    opacity: 0; /* Start invisible */
+    animation: flicker 5s infinite alternate;
+    width: 100px; /* Tamaño más grande para las luces */
+    height: 100px;
   }
 </style>
 </head>
 <body>
 
 <div class="lights-container"></div>
-<div class="intro" id="trimaticaLogo">
-  <img src="../img/TRIMATICAB.png" alt="TRIMATICA Logo">
-</div>
+<div class="intro" id="trimaticaLogo">TRIMATICA</div>
+
 <script>
   window.onload = function() {
+    var colors = ['#FFD700', '#FF8C00', '#1E90FF', '#32CD32', '#DC143C', '#4B0082']; // Colores de las luces
     // Función para generar luces
     function generateLights() {
       var lightsContainer = document.querySelector('.lights-container');
-      var colors = ['#FFD700', '#FF8C00', '#1E90FF', '#32CD32', '#DC143C', '#4B0082']; // Colores de las luces
-
-      // Dimensiones estimadas del área del logo para evitar la generación de luces
-      var logoArea = {
-        width: 30, // Ancho del logo en porcentaje del ancho total de la pantalla
-        height: 20, // Alto del logo en porcentaje del alto total de la pantalla
-      };
-
-      for (var i = 0; i < 30; i++) {
+      for (var i = 0; i < 50; i++) { // Aumenta el número para más luces
         var light = document.createElement('div');
         light.classList.add('light');
-        light.style.width = light.style.height = (Math.random() * 100 + 50) + 'px'; // Tamaño aleatorio entre 50px y 150px
-
-        var lightPosition = getLightPosition(logoArea);
-        light.style.top = lightPosition.top + '%';
-        light.style.left = lightPosition.left + '%';
-
+        light.style.top = Math.random() * 100 + '%';
+        light.style.left = Math.random() * 100 + '%';
         light.style.background = colors[Math.floor(Math.random() * colors.length)]; // Asigna un color aleatorio
-        light.style.animationDelay = (Math.random() * 3) + 's'; // Retraso aleatorio de la animación
-        light.style.animationDuration = (Math.random() * 2 + 3) + 's'; // Duración aleatoria entre 3 y 5 segundos
+        light.style.animationDelay = (Math.random() * 5) + 's'; // Retraso aleatorio de la animación
+        light.style.animationDuration = (Math.random() * 5 + 5) + 's'; // Duración aleatoria entre 5 y 10 segundos
         lightsContainer.appendChild(light);
       }
-    }
-
-    // Función para obtener una posición válida para las luces fuera del área del logo
-    function getLightPosition(logoArea) {
-      var position = {};
-      var minX = 50 - logoArea.width / 2;
-      var maxX = 50 + logoArea.width / 2;
-      var minY = 50 - logoArea.height / 2;
-      var maxY = 50 + logoArea.height / 2;
-
-      // Genera una posición hasta que esté fuera del área definida para el logo
-      do {
-        position.top = Math.random() * 100;
-        position.left = Math.random() * 100;
-      } while (position.left > minX && position.left < maxX && position.top > minY && position.top < maxY);
-
-      return position;
     }
 
     generateLights(); // Llama a la función para generar las luces
   };
 </script>
-
 
 </body>
 </html>
