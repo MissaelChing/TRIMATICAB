@@ -62,6 +62,19 @@
   animation: growAndFade 5s infinite alternate;
 }
 
+@keyframes growFadeAndBlur {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0.5); /* Empieza más pequeño */
+    filter: blur(8px); /* Empieza con más desenfoque */
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1); /* Llega a su tamaño normal */
+    filter: blur(0px); /* Sin desenfoque */
+  }
+}
+
 .light::after {
   content: '';
   position: absolute;
@@ -72,20 +85,9 @@
   border-left: 40px solid transparent;
   border-right: 40px solid transparent;
   border-bottom: 80px solid; /* El color se establecerá dinámicamente desde JS */
-  filter: blur(4px); /* Ajusta según la intensidad de desenfoque deseada */
+  animation: growFadeAndBlur 5s infinite alternate; /* Aplica la animación aquí */
 }
 
-
-@keyframes growAndFade {
-  0%, 100% {
-    opacity: 0;
-    transform: scale(1); /* Tamaño inicial */
-  }
-  50% {
-    opacity: 0.8; /* Aumenta la opacidad para hacerlas más visibles */
-    transform: scale(3); /* Ajusta según el efecto deseado */
-  }
-}
 
 
   @keyframes flicker {
