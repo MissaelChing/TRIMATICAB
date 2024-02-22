@@ -55,28 +55,26 @@
   }
 
 .light {
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-left: 50px solid transparent; /* Ajustado el tamaño del triángulo */
-    border-right: 50px solid transparent; /* Ajustado el tamaño del triángulo */
-    border-bottom: 100px solid white; /* Ajustado el tamaño del triángulo y orientación */
-    filter: blur(4px); /* Reduce el desenfoque para mayor visibilidad */
-    opacity: 0; /* Inicia invisible */
-    animation: growAndFade 5s infinite alternate;
-    background: white; /* Color por defecto, será sobreescrito por JS */
-  }
+  position: absolute;
+  width: 0; /* Ajusta a 0 ya que el triángulo se formará con los bordes */
+  height: 0; 
+  opacity: 0; /* Inicia invisible */
+  animation: growAndFade 5s infinite alternate;
+  background: transparent; /* Fondo transparente, el color vendrá de los bordes */
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%); /* Forma de triángulo */
+}
 
-  @keyframes growAndFade {
-    0%, 100% {
-      opacity: 0;
-      transform: translateY(0);
-    }
-    50% {
-      opacity: 0.8; /* Aumenta la opacidad para hacerlas más visibles */
-      transform: translateY(20px); /* Mueve el triángulo hacia abajo */
-    }
+@keyframes growAndFade {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(1); /* Tamaño inicial */
   }
+  50% {
+    opacity: 0.8; /* Aumenta la opacidad para hacerlas más visibles */
+    transform: scale(3); /* Ajusta según el efecto deseado */
+  }
+}
+
 
   @keyframes flicker {
     0%, 100% { opacity: 0; }
@@ -120,9 +118,9 @@
       for (let i = 0; i < lightsCount; i++) {
         const light = document.createElement('div');
         light.classList.add('light');
-        light.style.top = `${Math.random() * 100}%`;
-        light.style.left = `${Math.random() * 100}%`;
-        light.style.background = colors[Math.floor(Math.random() * colors.length)];
+       light.style.borderLeft = `40px solid transparent`; // Ajusta el tamaño para controlar la base del triángulo
+light.style.borderRight = `40px solid transparent`; // Igual que borderLeft
+light.style.borderBottom = `80px solid ${colors[Math.floor(Math.random() * colors.length)]}`; // El color se aplica aquí
         light.style.animationDelay = `${Math.random() * 5}s`;
         light.style.animationDuration = `${Math.random() * 5 + 5}s`;
         lightsContainer.appendChild(light);
