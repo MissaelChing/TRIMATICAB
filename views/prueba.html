@@ -67,14 +67,14 @@
 
 @keyframes growAndFade {
     0% {
-        transform: scale(0); /* Empieza desde 0 */
+        transform: scale(0.5); /* Empieza a mitad de tamaño para un efecto de crecimiento */
         opacity: 0.5;
-        filter: blur(10px);
+        filter: blur(8px); /* Comienza con un desenfoque fuerte */
     }
     100% {
-        transform: scale(2); /* Ajusta a 2 para duplicar el tamaño */
+        transform: scale(1); /* Crece a tamaño completo */
         opacity: 1;
-        filter: blur(0);
+        filter: blur(15px); /* Aumenta el desenfoque para un efecto más difuminado al final */
     }
 }
 
@@ -115,7 +115,7 @@
 
     function generateLights() {
         const lightsContainer = document.querySelector('.lights-container');
-        const lightsCount = window.innerWidth <= 768 ? 20 : 70;
+        const lightsCount = window.innerWidth <= 768 ? 10 : 70;
 
         for (let i = 0; i < lightsCount; i++) {
             const light = document.createElement('div');
