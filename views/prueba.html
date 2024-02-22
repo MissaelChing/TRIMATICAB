@@ -45,14 +45,14 @@
   }
   
   .lights-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    pointer-events: none;
-  }
+  position: fixed; /* Cambiado de absolute a fixed para cubrir toda la pantalla */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
 
 .light {
   position: absolute;
@@ -121,8 +121,9 @@
        light.style.borderLeft = `40px solid transparent`; // Ajusta el tamaño para controlar la base del triángulo
 light.style.borderRight = `40px solid transparent`; // Igual que borderLeft
 light.style.borderBottom = `80px solid ${colors[Math.floor(Math.random() * colors.length)]}`; // El color se aplica aquí
-        light.style.animationDelay = `${Math.random() * 5}s`;
-        light.style.animationDuration = `${Math.random() * 5 + 5}s`;
+       light.style.top = `${Math.random() * 100}%`;
+light.style.left = `${Math.random() * 100}%`;
+
         lightsContainer.appendChild(light);
       }
     }
