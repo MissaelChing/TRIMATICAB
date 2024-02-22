@@ -58,12 +58,11 @@
     position: absolute;
     width: 0;
     height: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-bottom: 16px solid white; /* Triángulo apuntando hacia abajo */
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid white; /* Triángulo apuntando hacia abajo */
     opacity: 0; /* Inicia invisible */
     animation: growAndFade 5s infinite alternate;
-    animation-delay: 0s;
   }
 
   @keyframes growAndFade {
@@ -96,7 +95,9 @@
     max-height: 50vh;
   }
 }
+
 </style>
+
 </head>
 <body>
 
@@ -115,7 +116,7 @@
       const lightsCount = window.innerWidth <= 768 ? 20 : 70;
 
       for (let i = 0; i < lightsCount; i++) {
-        const light = document.createElement('span'); // Cambiado de div a span
+        const light = document.createElement('div');
         light.classList.add('light');
         light.style.top = `${Math.random() * 100}%`;
         light.style.left = `${Math.random() * 100}%`;
@@ -129,5 +130,6 @@
     generateLights();
   };
 </script>
+
 </body>
 </html>
