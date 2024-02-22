@@ -16,33 +16,25 @@
     }
   }
 
-  @keyframes flicker {
-    0%, 100% { opacity: 0; }
-    50% { opacity: 0.8; }
+  body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0a0f0b 0%, #003973 100%);
+    height: 100vh;
+    overflow: hidden;
   }
 
- 
-  body {
-  margin: 0;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  /* Definición del gradiente de fondo */
-  background: linear-gradient(135deg, #0a0f0b 0%, #003973 100%);
-}
-
-
   .intro {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     animation: fadeInOutBlur 6s ease forwards;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 2;
   }
 
@@ -50,25 +42,6 @@
     max-width: 90%;
     max-height: 50vh;
     width: auto;
-    /* Asegura que la imagen del logo se mantenga en el centro */
-    display: block;
-    margin: 0 auto;
-  }
-
-  /* Media query para dispositivos móviles */
-  @media (max-width: 768px) {
-    .intro img {
-      max-width: 80%; /* Aumenta el tamaño del logo en pantallas pequeñas */
-      max-height: 30vh;
-    }
-  }
-
-  /* Media query para dispositivos muy pequeños, como teléfonos en orientación vertical */
-  @media (max-width: 480px) {
-    .intro img {
-      max-width: 90%; /* Permite que el logo ocupe más espacio en pantallas muy pequeñas */
-      max-height: 40vh;
-    }
   }
 
   .lights-container {
@@ -90,7 +63,23 @@
     width: 100px;
     height: 100px;
   }
+
+  /* Media queries para mejorar la visualización en dispositivos móviles */
+  @media (max-width: 768px) {
+    .intro img {
+      max-width: 75%; /* Ajusta el tamaño del logo en pantallas más pequeñas */
+      max-height: 40vh;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .intro img {
+      max-width: 90%; /* Permite que el logo ocupe más espacio en pantallas muy pequeñas */
+      max-height: 30vh;
+    }
+  }
 </style>
+
 </head>
 <body>
 
