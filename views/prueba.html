@@ -57,11 +57,12 @@
 .light {
     position: absolute;
     border-radius: 50%;
-    width: 5px; /* Tamaño inicial pequeño */
-    height: 5px;
-    filter: blur(8px); /* Desenfoque */
+    width: 20px; /* Aumenta el tamaño inicial */
+    height: 20px;
+    filter: blur(4px); /* Reduce el desenfoque para mayor visibilidad */
     opacity: 0; /* Inicia invisible */
     animation: growAndFade 5s infinite alternate;
+    background: white; /* Color por defecto, será sobreescrito por JS */
   }
 
   @keyframes growAndFade {
@@ -70,8 +71,8 @@
       transform: scale(1); /* Tamaño inicial */
     }
     50% {
-      opacity: 0.6; /* Aumenta la opacidad */
-      transform: scale(5); /* Aumenta el tamaño */
+      opacity: 0.8; /* Aumenta la opacidad para hacerlas más visibles */
+      transform: scale(3); /* Aumenta la escala para hacerlas más grandes */
     }
   }
   @keyframes flicker {
