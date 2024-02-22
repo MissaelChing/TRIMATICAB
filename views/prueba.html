@@ -58,14 +58,14 @@
     position: absolute;
     width: 0;
     height: 0;
-    border-left: 50px solid transparent; /* Ajustado el tamaño del triángulo */
-    border-right: 50px solid transparent; /* Ajustado el tamaño del triángulo */
-    border-bottom: 100px solid white; /* Ajustado el tamaño del triángulo y orientación */
-    filter: blur(4px); /* Reduce el desenfoque para mayor visibilidad */
-    opacity: 0; /* Inicia invisible */
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 100px solid white;
+    filter: none; /* O ajustar según sea necesario */
+    opacity: 0;
     animation: growAndFade 5s infinite alternate;
-    background: white; /* Color por defecto, será sobreescrito por JS */
-  }
+}
+
 
   @keyframes growAndFade {
     0%, 100% {
