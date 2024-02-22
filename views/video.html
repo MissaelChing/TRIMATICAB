@@ -66,7 +66,89 @@
     <div id="side-menu" class="side-nav">
         <!-- Menú lateral -->
     </div>
+    <style>
+        /* Estilos para el contenido principal y secciones de videos */
+.main-content {
+    padding: 20px;
+    color: #333;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+.video-gallery, .video-services, .contact-us {
+    margin: 20px 0;
+}
+
+.video-item {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.video-item img {
+    width: 100%; /* Ajusta este valor según tus necesidades */
+    height: auto;
+    border-radius: 5px;
+}
+
+.video-services p, .contact-us p {
+    margin-bottom: 15px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form input, form textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form button {
+    padding: 10px 20px;
+    background-color: #5C6BC0; /* Color de botón principal */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #3F51B5; /* Color de botón al pasar el ratón */
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+    .navbar-brand a {
+        font-size: 20px;
+    }
     
+    .navbar-icons {
+        right: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        flex-direction: column;
+    }
+
+    .navbar-brand a {
+        margin-bottom: 10px; /* Espacio entre logotipo y menú de hamburguesa */
+    }
+    
+    .video-item {
+        width: 100%; /* Asegura que los elementos de video sean de ancho completo */
+    }
+}
+    </style>
     <script src="../js/script.js"></script>
 </body>
 </html>
