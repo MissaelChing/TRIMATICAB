@@ -55,13 +55,26 @@
 }
 
 .light {
-  position: absolute;
+  position: fixed; /* Cambiado a fixed para posicionar en relación a la ventana */
   width: 0;
   height: 0;
-  opacity: 0; /* Inicia invisible */
-  /* Elimina la siguiente línea ya que la animación 'growAndFade' no está definida */
-  /* animation: growAndFade 5s infinite alternate; */
+  opacity: 0;
 }
+
+.light::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centrar el triángulo */
+  width: 0;
+  height: 0;
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  border-bottom: 80px solid transparent; /* El color se establecerá dinámicamente desde JS */
+  animation: growFadeAndBlur 5s infinite alternate;
+}
+
 
 @keyframes growFadeAndBlur {
   0%, 100% {
@@ -75,18 +88,6 @@
     filter: blur(0); /* Sin desenfoque en el punto más visible */
   }
 }
-
-.light::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-left: 40px solid transparent;
-  border-right: 40px solid transparent;
-  border-bottom: 80px solid; /* El color se establecerá dinámicamente desde JS */
-  animation: growFadeAndBlur 5s infinite alternate; /* Esta es la animación correcta */
-}
-
   @keyframes flicker {
     0%, 100% { opacity: 0; }
     50% { opacity: 0.6; } /* Opacidad reducida para un efecto más sutil */
