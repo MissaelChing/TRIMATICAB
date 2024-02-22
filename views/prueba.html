@@ -80,19 +80,20 @@
     50% { opacity: 0.6; } /* Opacidad reducida para un efecto más sutil */
   }
   /* Media queries para mejorar la visualización en dispositivos móviles */
-  @media (max-width: 768px) {
-    .intro img {
-      max-width: 75%; /* Ajusta el tamaño del logo en pantallas más pequeñas */
-      max-height: 40vh;
-    }
+ @media (max-width: 768px) {
+  .intro img {
+    max-width: 85%; /* Aumenta más el tamaño del logo en pantallas medianas */
+    max-height: 45vh;
   }
+}
 
-  @media (max-width: 480px) {
-    .intro img {
-      max-width: 90%; /* Permite que el logo ocupe más espacio en pantallas muy pequeñas */
-      max-height: 30vh;
-    }
+@media (max-width: 480px) {
+  .intro img {
+    max-width: 100%; /* Hace que el logo ocupe la mayor parte de la pantalla en dispositivos muy pequeños */
+    max-height: 50vh;
   }
+}
+
 </style>
 
 </head>
