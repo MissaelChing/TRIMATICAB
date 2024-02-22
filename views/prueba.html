@@ -5,6 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TRIMATICA Intro</title>
 <style>
+  @keyframes fadeInOutBlur {
+    0%, 100% {
+      opacity: 0;
+      filter: blur(8px);
+    }
+    50% {
+      opacity: 1;
+      filter: blur(0);
+    }
+  }
+
   body {
     margin: 0;
     display: flex;
@@ -16,16 +27,21 @@
   }
 
   .intro {
-    position: relative;
-    width: 60%;
-    max-width: 400px;
+    animation: fadeInOutBlur 6s ease forwards;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 2;
   }
 
   .intro img {
-    width: 100%;
-    height: auto;
-    display: block;
+    max-width: 90%;
+    max-height: 50vh;
+    width: auto;
   }
 
   .lights-container {
@@ -38,41 +54,50 @@
     pointer-events: none;
   }
 
-  .light {
+.light {
     position: absolute;
     border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    background: white;
-    opacity: 0;
+    width: 80px; /* Aumenta el tamaño inicial */
+    height: 80px;
+    filter: blur(4px); /* Reduce el desenfoque para mayor visibilidad */
+    opacity: 0; /* Inicia invisible */
     animation: growAndFade 5s infinite alternate;
+    background: white; /* Color por defecto, será sobreescrito por JS */
   }
 
   @keyframes growAndFade {
     0%, 100% {
-      opacity: 0.2;
-      transform: scale(1);
+      opacity: 0;
+      transform: scale(1); /* Tamaño inicial */
     }
     50% {
-      opacity: 0.6;
-      transform: scale(2);
+      opacity: 0.8; /* Aumenta la opacidad para hacerlas más visibles */
+      transform: scale(3); /* Aumenta la escala para hacerlas más grandes */
     }
   }
-
+  @keyframes flicker {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 0.6; } /* Opacidad reducida para un efecto más sutil */
+  }
+  /* Media queries para mejorar la visualización en dispositivos móviles */
   @media (max-width: 768px) {
-    .intro {
-      width: 80%;
+    .intro img {
+      max-width: 75%; /* Ajusta el tamaño del logo en pantallas más pequeñas */
+      max-height: 40vh;
     }
   }
 
   @media (max-width: 480px) {
-    .intro {
-      width: 90%;
+    .intro img {
+      max-width: 90%; /* Permite que el logo ocupe más espacio en pantallas muy pequeñas */
+      max-height: 30vh;
     }
   }
 </style>
+
 </head>
 <body>
+
 <div class="lights-container"></div>
 <div class="intro" id="trimaticaLogo">
   <img src="../img/TRIMATICAB.png" alt="TRIMATICA Logo" />
@@ -80,20 +105,18 @@
 
 <script>
   window.onload = function() {
-    const colors = ['#FFD700', '#FF8C00', '#1E90FF', '#32CD32', '#DC143C', '#4B0082'];
+    const colors = ['#FFD700', '#FF8C00', '#1E90FF', '#32CD32', '#DC143C', '#4B0082']; // Define tus colores aquí
 
     function generateLights() {
       const lightsContainer = document.querySelector('.lights-container');
-      const lightsCount = window.innerWidth > 768 ? 50 : 30;
-
-      for (let i = 0; i < lightsCount; i++) {
+      for (let i = 0; i < 100; i++) { // Ajusta para más o menos luces
         const light = document.createElement('div');
         light.classList.add('light');
-        light.style.top = `${Math.random() * 100}%`;
-        light.style.left = `${Math.random() * 100}%`;
-        light.style.background = colors[Math.floor(Math.random() * colors.length)];
-        light.style.animationDelay = `${Math.random() * 5}s`;
-        light.style.animationDuration = `${Math.random() * 5 + 5}s`;
+        light.style.top = ${Math.random() * 100}%;
+        light.style.left = ${Math.random() * 100}%;
+        light.style.background = colors[Math.floor(Math.random() * colors.length)]; // Asigna un color aleatorio
+        light.style.animationDelay = ${Math.random() * 5}s;
+        light.style.animationDuration = ${Math.random() * 5 + 5}s;
         lightsContainer.appendChild(light);
       }
     }
@@ -101,5 +124,7 @@
     generateLights();
   };
 </script>
+
+
 </body>
 </html>
