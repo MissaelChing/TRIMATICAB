@@ -62,6 +62,8 @@
   animation: growAndFade 5s infinite alternate;
   background: transparent; /* Fondo transparente, el color vendrá de los bordes */
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%); /* Forma de triángulo */
+  overflow: hidden; /* Asegura que el pseudo-elemento se recorte según la forma del triángulo */
+  position: relative; /* Posicionamiento relativo para el pseudo-elemento */
 }
 
 @keyframes growAndFade {
