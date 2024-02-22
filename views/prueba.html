@@ -28,11 +28,17 @@
 
   .intro {
     opacity: 0;
-    font-size: 5em;
-    color: white;
-    font-family: 'Arial', sans-serif;
-    text-transform: uppercase;
     animation: fadeInOut 6s ease forwards;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+
+  .intro img {
+    max-width: 90%;
+    max-height: 50vh;
   }
 
   .lights-container {
@@ -48,7 +54,6 @@
   .light {
     position: absolute;
     border-radius: 50%;
-    background: white;
     opacity: 0; /* Start invisible */
     animation: flicker 5s infinite alternate;
     width: 100px; /* Tamaño más grande para las luces */
@@ -59,15 +64,17 @@
 <body>
 
 <div class="lights-container"></div>
-<div class="intro" id="trimaticaLogo">TRIMATICA</div>
+<div class="intro" id="trimaticaLogo">
+  <img src="../img/TRIMATICAB.png" alt="TRIMATICA Logo" />
+</div>
 
 <script>
   window.onload = function() {
     var colors = ['#FFD700', '#FF8C00', '#1E90FF', '#32CD32', '#DC143C', '#4B0082']; // Colores de las luces
-    // Función para generar luces
+    
     function generateLights() {
       var lightsContainer = document.querySelector('.lights-container');
-      for (var i = 0; i < 50; i++) { // Aumenta el número para más luces
+      for (var i = 0; i < 50; i++) {
         var light = document.createElement('div');
         light.classList.add('light');
         light.style.top = Math.random() * 100 + '%';
