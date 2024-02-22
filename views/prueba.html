@@ -56,31 +56,34 @@
 
 .light {
     position: absolute;
-    border-radius: 50%;
-    width: 80px; /* Aumenta el tamaño inicial */
-    height: 80px;
-    filter: blur(4px); /* Reduce el desenfoque para mayor visibilidad */
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid white; /* Triángulo apuntando hacia abajo */
     opacity: 0; /* Inicia invisible */
     animation: growAndFade 5s infinite alternate;
-    background: white; /* Color por defecto, será sobreescrito por JS */
+    animation-delay: 0s;
   }
 
   @keyframes growAndFade {
     0%, 100% {
       opacity: 0;
-      transform: scale(1); /* Tamaño inicial */
+      transform: translateY(0);
     }
     50% {
       opacity: 0.8; /* Aumenta la opacidad para hacerlas más visibles */
-      transform: scale(3); /* Aumenta la escala para hacerlas más grandes */
+      transform: translateY(20px); /* Mueve el triángulo hacia abajo */
     }
   }
+
   @keyframes flicker {
     0%, 100% { opacity: 0; }
     50% { opacity: 0.6; } /* Opacidad reducida para un efecto más sutil */
   }
-  /* Media queries para mejorar la visualización en dispositivos móviles */
- @media (max-width: 768px) {
+
+/* Media queries para mejorar la visualización en dispositivos móviles */
+@media (max-width: 768px) {
   .intro img {
     max-width: 85%; /* Aumenta más el tamaño del logo en pantallas medianas */
     max-height: 45vh;
@@ -93,9 +96,7 @@
     max-height: 50vh;
   }
 }
-
 </style>
-
 </head>
 <body>
 
@@ -114,11 +115,11 @@
       const lightsCount = window.innerWidth <= 768 ? 20 : 70;
 
       for (let i = 0; i < lightsCount; i++) {
-        const light = document.createElement('div');
+        const light = document.createElement('span'); // Cambiado de div a span
         light.classList.add('light');
         light.style.top = `${Math.random() * 100}%`;
         light.style.left = `${Math.random() * 100}%`;
-        light.style.background = colors[Math.floor(Math.random() * colors.length)];
+        light.style.borderBottomColor = colors[Math.floor(Math.random() * colors.length)]; // Cambia el color del borde inferior
         light.style.animationDelay = `${Math.random() * 5}s`;
         light.style.animationDuration = `${Math.random() * 5 + 5}s`;
         lightsContainer.appendChild(light);
@@ -128,8 +129,5 @@
     generateLights();
   };
 </script>
-
-
-
 </body>
 </html>
