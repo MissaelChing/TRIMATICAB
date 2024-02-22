@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TRIMATICA Intro</title>
-  <style>
+<style>
   @keyframes fadeInOutBlur {
     0%, 100% {
       opacity: 0;
@@ -12,8 +12,13 @@
     }
     50% {
       opacity: 1;
-      filter: blur(0px);
+      filter: blur(0);
     }
+  }
+
+  @keyframes flicker {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 0.8; }
   }
 
   body {
@@ -27,20 +32,21 @@
   }
 
   .intro {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     animation: fadeInOutBlur 6s ease forwards;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
   }
 
   .intro img {
     max-width: 90%;
     max-height: 50vh;
-    width: auto; /* Asegura la responsividad y mantiene la relación de aspecto */
+    width: auto;
   }
 
   .lights-container {
@@ -56,6 +62,7 @@
   .light {
     position: absolute;
     border-radius: 50%;
+    background: white;
     opacity: 0;
     animation: flicker 5s infinite alternate;
     width: 100px;
@@ -67,13 +74,13 @@
 
 <div class="lights-container"></div>
 <div class="intro" id="trimaticaLogo">
-  <img src="../img/TRIMATICAB.png" alt="TRIMATICA Logo" />
+  <img src="path_to_your_logo_image.png" alt="TRIMATICA Logo" />
 </div>
 
 <script>
   window.onload = function() {
     var colors = ['#FFD700', '#FF8C00', '#1E90FF', '#32CD32', '#DC143C', '#4B0082']; // Colores de las luces
-    
+
     function generateLights() {
       var lightsContainer = document.querySelector('.lights-container');
       for (var i = 0; i < 50; i++) {
@@ -81,14 +88,14 @@
         light.classList.add('light');
         light.style.top = Math.random() * 100 + '%';
         light.style.left = Math.random() * 100 + '%';
-        light.style.background = colors[Math.floor(Math.random() * colors.length)]; // Asigna un color aleatorio
-        light.style.animationDelay = (Math.random() * 5) + 's'; // Retraso aleatorio de la animación
-        light.style.animationDuration = (Math.random() * 5 + 5) + 's'; // Duración aleatoria entre 5 y 10 segundos
+        light.style.background = colors[Math.floor(Math.random() * colors.length)];
+        light.style.animationDelay = (Math.random() * 5) + 's';
+        light.style.animationDuration = (Math.random() * 5 + 5) + 's';
         lightsContainer.appendChild(light);
       }
     }
 
-    generateLights(); // Llama a la función para generar las luces
+    generateLights();
   };
 </script>
 
