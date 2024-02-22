@@ -54,16 +54,20 @@
     pointer-events: none;
   }
 
-  .light {
+.light {
     position: absolute;
     border-radius: 50%;
-    background: white;
-    opacity: 0;
+    width: 20px; /* Tamaño reducido para un efecto más sutil */
+    height: 20px;
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 70%);
+    opacity: 0; /* Comienzan invisibles */
     animation: flicker 5s infinite alternate;
-    width: 100px;
-    height: 100px;
   }
 
+  @keyframes flicker {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 0.6; } /* Opacidad reducida para un efecto más sutil */
+  }
   /* Media queries para mejorar la visualización en dispositivos móviles */
   @media (max-width: 768px) {
     .intro img {
