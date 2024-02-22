@@ -54,50 +54,44 @@
     pointer-events: none;
   }
 
-.light {
+  .light {
     position: absolute;
     border-radius: 50%;
-    width: 80px; /* Aumenta el tamaño inicial */
+    background: white;
+    width: 80px;
     height: 80px;
-    filter: blur(4px); /* Reduce el desenfoque para mayor visibilidad */
-    opacity: 0; /* Inicia invisible */
+    filter: blur(4px);
+    opacity: 0;
     animation: growAndFade 5s infinite alternate;
-    background: white; /* Color por defecto, será sobreescrito por JS */
   }
 
   @keyframes growAndFade {
     0%, 100% {
       opacity: 0;
-      transform: scale(1); /* Tamaño inicial */
+      transform: scale(1);
     }
     50% {
-      opacity: 0.8; /* Aumenta la opacidad para hacerlas más visibles */
-      transform: scale(3); /* Aumenta la escala para hacerlas más grandes */
+      opacity: 0.8;
+      transform: scale(3);
     }
   }
-  @keyframes flicker {
-    0%, 100% { opacity: 0; }
-    50% { opacity: 0.6; } /* Opacidad reducida para un efecto más sutil */
-  }
+
   /* Media queries para mejorar la visualización en dispositivos móviles */
   @media (max-width: 768px) {
-    .intro img {
-      max-width: 75%; /* Ajusta el tamaño del logo en pantallas más pequeñas */
-      max-height: 40vh;
+    .light {
+      filter: blur(2px); /* Menos desenfoque para mejorar el rendimiento */
     }
   }
 
   @media (max-width: 480px) {
-    .intro img {
-      max-width: 90%; /* Permite que el logo ocupe más espacio en pantallas muy pequeñas */
-      max-height: 30vh;
+    .light {
+      animation: none;
+      opacity: 0.5; /* Hacer las luces visibles pero estáticas */
     }
   }
 </style>
-
 </head>
 <body>
-
 <div class="lights-container"></div>
 <div class="intro" id="trimaticaLogo">
   <img src="../img/TRIMATICAB.png" alt="TRIMATICA Logo" />
@@ -109,7 +103,9 @@
 
     function generateLights() {
       const lightsContainer = document.querySelector('.lights-container');
-      for (let i = 0; i < 100; i++) { // Ajusta para más o menos luces
+      const lightsCount = window.innerWidth > 768 ? 100 : 50; // Reducir la cantidad de luces en pantallas pequeñas
+
+      for (let i = 0; i < lightsCount; i++) {
         const light = document.createElement('div');
         light.classList.add('light');
         light.style.top = `${Math.random() * 100}%`;
@@ -124,7 +120,5 @@
     generateLights();
   };
 </script>
-
-
 </body>
 </html>
