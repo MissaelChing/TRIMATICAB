@@ -47,6 +47,25 @@
     max-width: 90%;
     max-height: 50vh;
     width: auto;
+    /* Asegura que la imagen del logo se mantenga en el centro */
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* Media query para dispositivos móviles */
+  @media (max-width: 768px) {
+    .intro img {
+      max-width: 80%; /* Aumenta el tamaño del logo en pantallas pequeñas */
+      max-height: 30vh;
+    }
+  }
+
+  /* Media query para dispositivos muy pequeños, como teléfonos en orientación vertical */
+  @media (max-width: 480px) {
+    .intro img {
+      max-width: 90%; /* Permite que el logo ocupe más espacio en pantallas muy pequeñas */
+      max-height: 40vh;
+    }
   }
 
   .lights-container {
