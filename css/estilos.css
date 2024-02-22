@@ -7,30 +7,47 @@ body {
 
 .navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Cambiado de 'space-between' a 'center' */
     align-items: center;
     padding: 15px 25px;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+.navbar-brand {
+    display: flex; /* Asegura que el logo y el texto estén en la misma línea */
+    justify-content: center; /* Centra el contenido del .navbar-brand */
+    align-items: center; /* Alinea verticalmente el contenido */
+    flex: 1; /* Permite que el .navbar-brand crezca */
+}
+
 .navbar-brand a {
-    margin-left: 100px;
-    /* Ajusta este valor para aumentar el margen izquierdo */
     text-decoration: none;
-    text-color:black;
     color: black;
     font-size: 24px;
-    font-family: 'Glot Round Medium';
-    /* Helvetica como primera opción, Arial como backup, y sans-serif como genérico */
-    /* otros estilos que necesites */
+    font-family: 'Glot Round Medium', Helvetica, Arial, sans-serif;
+    /* Elimina el margen para centrar el texto con flexbox */
 }
 
 .navbar-icons {
-    margin-right: 100px;
-    /* Ajusta este valor para aumentar el margen derecho */
+    position: absolute; /* Cambiado a posicionamiento absoluto */
+    right: 25px; /* Ajusta la posición hacia la derecha */
+    top: 15px; /* Ajusta la posición hacia la parte superior para alinear con el contenido de la barra de navegación */
 }
 
+/* Se añade un media query para manejar el diseño responsive */
+@media (max-width: 768px) {
+    .navbar-brand, .navbar-icons {
+        position: static; /* Regresa al flujo normal del documento en pantallas más pequeñas */
+        margin: 0 auto; /* Centra automáticamente los elementos */
+        display: block;
+        text-align: center;
+    }
+
+    .navbar-icons {
+        padding-top: 10px; /* Añade espacio arriba del menú sandwich cuando está debajo del logo */
+    }
+}
 .icon-book,
 .icon-sandwich {
     font-size: 24px;
