@@ -59,7 +59,8 @@
   width: 0;
   height: 0;
   opacity: 0; /* Inicia invisible */
-  animation: growFadeAndBlur 5s infinite alternate;
+  /* Elimina la siguiente línea ya que la animación 'growAndFade' no está definida */
+  /* animation: growAndFade 5s infinite alternate; */
 }
 
 @keyframes growFadeAndBlur {
@@ -83,7 +84,7 @@
   border-left: 40px solid transparent;
   border-right: 40px solid transparent;
   border-bottom: 80px solid; /* El color se establecerá dinámicamente desde JS */
-  animation: growFadeAndBlur 5s infinite alternate; /* Asegúrate de que esta animación esté correctamente referenciada */
+  animation: growFadeAndBlur 5s infinite alternate; /* Esta es la animación correcta */
 }
 
   @keyframes flicker {
