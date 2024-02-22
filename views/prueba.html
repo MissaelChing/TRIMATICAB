@@ -4,16 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TRIMATICA Intro</title>
-<style>
-  @keyframes fadeInOut {
-    0% { opacity: 0; }
-    50% { opacity: 1; }
-    100% { opacity: 0; }
-  }
-
-  @keyframes flicker {
-    0%, 100% { opacity: 0; }
-    50% { opacity: 0.8; }
+  <style>
+  @keyframes fadeInOutBlur {
+    0%, 100% {
+      opacity: 0;
+      filter: blur(8px);
+    }
+    50% {
+      opacity: 1;
+      filter: blur(0px);
+    }
   }
 
   body {
@@ -27,18 +27,20 @@
   }
 
   .intro {
-    opacity: 0;
-    animation: fadeInOut 6s ease forwards;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 2;
+    animation: fadeInOutBlur 6s ease forwards;
   }
 
   .intro img {
     max-width: 90%;
     max-height: 50vh;
+    width: auto; /* Asegura la responsividad y mantiene la relación de aspecto */
   }
 
   .lights-container {
@@ -54,9 +56,9 @@
   .light {
     position: absolute;
     border-radius: 50%;
-    opacity: 0; /* Start invisible */
+    opacity: 0;
     animation: flicker 5s infinite alternate;
-    width: 100px; /* Tamaño más grande para las luces */
+    width: 100px;
     height: 100px;
   }
 </style>
