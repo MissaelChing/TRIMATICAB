@@ -114,24 +114,25 @@
     const colors = ['#FFD700', '#FF8C00', '#1E90FF', '#32CD32', '#DC143C', '#4B0082'];
 
     function generateLights() {
-      const lightsContainer = document.querySelector('.lights-container');
-      // Usa un número menor de luces para pantallas más pequeñas
-      const lightsCount = window.innerWidth <= 768 ? 20 : 70;
+        const lightsContainer = document.querySelector('.lights-container');
+        const lightsCount = window.innerWidth <= 768 ? 20 : 70;
 
-      for (let i = 0; i < lightsCount; i++) {
-        const light = document.createElement('div');
-        light.classList.add('light');
-        light.style.top = `${Math.random() * 100}%`;
-        light.style.left = `${Math.random() * 100}%`;
-        light.style.background = colors[Math.floor(Math.random() * colors.length)];
-        light.style.animationDelay = `${Math.random() * 5}s`;
-        light.style.animationDuration = `${Math.random() * 5 + 5}s`;
-        lightsContainer.appendChild(light);
-      }
+        for (let i = 0; i < lightsCount; i++) {
+            const light = document.createElement('div');
+            light.classList.add('light');
+            light.style.top = `${Math.random() * 100}%`;
+            light.style.left = `${Math.random() * 100}%`;
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            light.style.borderBottomColor = color; // Aplicar color aleatorio
+            light.style.animationDelay = `${Math.random() * 5}s`;
+            light.style.animationDuration = `${Math.random() * 5 + 5}s`;
+            lightsContainer.appendChild(light);
+        }
     }
 
     generateLights();
-  };
+};
+
 </script>
 
 
