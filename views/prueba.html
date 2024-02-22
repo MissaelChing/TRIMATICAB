@@ -65,14 +65,16 @@
 .light::after {
   content: '';
   position: absolute;
-  top: -50%; /* Extiende el pseudo-elemento más allá de los límites del triángulo */
-  left: -50%;
-  width: 200%; /* Hace que el pseudo-elemento sea más grande que el triángulo */
-  height: 200%;
-  background: inherit; /* Hereda el color de fondo del triángulo */
-  filter: blur(8px); /* Ajusta el nivel de desenfoque según sea necesario */
-  clip-path: polygon(50% 0%, 0% 100%, 100% 100%); /* Mantiene la forma triangular */
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  border-bottom: 80px solid; /* El color se establecerá dinámicamente desde JS */
+  filter: blur(4px); /* Ajusta según la intensidad de desenfoque deseada */
 }
+
 
 @keyframes growAndFade {
   0%, 100% {
