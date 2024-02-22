@@ -112,11 +112,11 @@
       for (let i = 0; i < 100; i++) { // Ajusta para más o menos luces
         const light = document.createElement('div');
         light.classList.add('light');
-        light.style.top = ${Math.random() * 100}%;
-        light.style.left = ${Math.random() * 100}%;
+        light.style.top = `${Math.random() * 100}%`; // Corregido: Añadidas comillas de plantilla literal
+        light.style.left = `${Math.random() * 100}%`; // Corregido: Añadidas comillas de plantilla literal
         light.style.background = colors[Math.floor(Math.random() * colors.length)]; // Asigna un color aleatorio
-        light.style.animationDelay = ${Math.random() * 5}s;
-        light.style.animationDuration = ${Math.random() * 5 + 5}s;
+        light.style.animationDelay = `${Math.random() * 5}s`; // Corregido: Añadidas comillas de plantilla literal
+        light.style.animationDuration = `${Math.random() * 5 + 5}s`; // Corregido: Añadidas comillas de plantilla literal
         lightsContainer.appendChild(light);
       }
     }
