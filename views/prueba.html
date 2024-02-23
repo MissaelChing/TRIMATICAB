@@ -21,6 +21,9 @@
     80% {
       filter: blur(0);
     }
+    90% {
+      opacity: 1;
+    }
     100% {
       opacity: 0;
     }
@@ -68,21 +71,28 @@
     position: absolute;
     width: 0;
     height: 0;
-    border-left: 50px solid transparent;
-    border-right: 50px solid transparent;
-    border-bottom: 100px solid rgba(255, 255, 255, 0.3); /* Transparencia para el efecto de luz */
-    box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.5); /* Efecto de brillo */
-    animation: moveSlow 30s infinite alternate;
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-bottom: 200px solid;
+    opacity: 0.1;
+    animation: moveTowardsCenter 5s ease-in forwards, fadeOut 1s ease 5s forwards;
   }
 
-  @keyframes moveSlow {
-    0%, 100% {
+  @keyframes moveTowardsCenter {
+    from {
       transform: translate(0, 0);
     }
-    50% {
-      transform: translate(5vw, 5vh);
+    to {
+      transform: translate(calc(50vw - 50%), calc(50vh - 50%)); /* Mover hacia el centro */
     }
   }
+
+  @keyframes fadeOut {
+    to {
+      opacity: 0;
+    }
+  }
+
 </style>
 </head>
 <body>
