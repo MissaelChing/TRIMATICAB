@@ -5,7 +5,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TRIMATICA Intro</title>
 <style>
+  @keyframes fadeInBlurToSharp {
+    0% {
+      opacity: 0;
+      filter: blur(12px); /* Comienza más desenfocado */
+    }
+    30% {
+      opacity: 0.5;
+      filter: blur(8px);
+    }
+    60% {
+      opacity: 1;
+      filter: blur(4px);
+    }
+    80% {
+      filter: blur(0); /* Totalmente nítido */
+    }
+    100% {
+      opacity: 0; /* Desaparece */
+    }
+  }
+
   body {
+    animation: fadeInBlurToSharp 10s ease forwards;
     margin: 0;
     display: flex;
     justify-content: center;
@@ -16,16 +38,17 @@
   }
 
   .intro {
-    position: relative; /* Cambiado a relative para contener los triángulos dentro de .intro */
-    width: 100vw;
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
   }
 
   .intro img {
-    z-index: 2; /* Asegúrate de que el logo esté encima de los triángulos */
     max-width: 100%;
     max-height: 60vh;
     width: auto;
@@ -33,57 +56,57 @@
 
   .lights-container {
     position: absolute;
-    width: 100%;
-    height: 100%;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
     z-index: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    pointer-events: none;
   }
 
   .light {
     position: absolute;
-    border-left: 50px solid transparent;
-    border-right: 50px solid transparent;
-    border-bottom: 100px solid rgba(255, 255, 255, 0.5); /* Transparencia ajustada para visibilidad */
-    opacity: 0; /* Inicialmente transparentes */
-    animation: rotateAroundLogo 60s linear infinite, fadeIn 10s ease forwards;
+    width: 0;
+    height: 0;
+    border-left: 100px solid transparent; /* Más grande */
+    border-right: 100px solid transparent; /* Más grande */
+    border-bottom: 200px solid; /* Ajusta el color en JavaScript */
+    opacity: 0.1; /* Mantén la transparencia */
+    animation: moveSlow 30s infinite alternate; /* Solo movimiento, sin desvanecimiento */
   }
 
-  @keyframes rotateAroundLogo {
+  @keyframes moveSlow {
+    0% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(2vw, 2vh); /* Muy sutil */
+    }
     100% {
-      transform: rotate(1turn);
+      transform: translate(0, 0);
     }
   }
-
-  @keyframes fadeIn {
-    to {
-      opacity: 1; /* Aparecen después de un tiempo */
-    }
-  }
-
 </style>
 </head>
 <body>
 
+<div class="lights-container"></div>
 <div class="intro" id="trimaticaLogo">
   <img src="../img/TRIMATICAB.png" alt="TRIMATICA Logo" />
-  <div class="lights-container"></div>
 </div>
 
 <script>
 window.onload = function() {
   const lightsContainer = document.querySelector('.lights-container');
   const lightsCount = 70;
-  const radius = 300; // Radio de la circunferencia alrededor del logo
 
   for (let i = 0; i < lightsCount; i++) {
     const light = document.createElement('div');
     light.classList.add('light');
-    const angle = (360 / lightsCount) * i; // Ángulo para distribuir los triángulos
-    light.style.transform = `rotate(${angle}deg) translate(${radius}px) rotate(-${angle}deg)`;
+    light.style.top = `${Math.random() * 100}%`;
+    light.style.left = `${Math.random() * 100}%`;
+    const colors = ['#FFD700', '#FF8C00', '#1E90FF', '#32CD32', '#DC143C', '#4B0082'];
+    light.style.borderBottomColor = colors[Math.floor(Math.random() * colors.length)];
     lightsContainer.appendChild(light);
   }
 };
