@@ -116,16 +116,6 @@ window.onload = function() {
     lightsContainer.appendChild(light);
   }
 };
-  for (let i = 0; i < lightsCount; i++) {
-    const light = document.createElement('div');
-    light.classList.add('light');
-    light.style.top = `${Math.random() * 100}%`;
-    light.style.left = `${Math.random() * 100}%`;
-    const colors = ['#FFD700', '#FF8C00', '#1E90FF', '#32CD32', '#DC143C', '#4B0082'];
-    light.style.borderBottomColor = colors[Math.floor(Math.random() * colors.length)];
-    lightsContainer.appendChild(light);
-  }
-};
 </script>
 
 </body>
