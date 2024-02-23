@@ -61,8 +61,8 @@
     border-left: 150px solid transparent;
     border-right: 150px solid transparent;
     border-bottom: 300px solid; /* Define un color aquí o en el estilo en línea */
-    opacity: 0.8; /* Aumentado para menos transparencia */
-    animation: growAndFade 5s infinite alternate, fadeOut 2s ease 8s forwards, move 10s infinite alternate;
+   opacity: 0.1; /* Ajusta para una mayor transparencia */
+  animation: growAndFade 5s infinite alternate, fadeOut 2s ease 8s forwards, moveSlow 20s infinite alternate;
   }
 
   @keyframes growAndFade {
@@ -84,23 +84,17 @@
     }
   }
 
-  @keyframes move {
-    0% {
-      transform: translate(0, 0);
-    }
-    25% {
-      transform: translate(5vw, 10vh);
-    }
-    50% {
-      transform: translate(10vw, 0vh);
-    }
-    75% {
-      transform: translate(-5vw, -10vh);
-    }
-    100% {
-      transform: translate(0, 0);
-    }
+@keyframes moveSlow {
+  0% {
+    transform: translate(0, 0);
   }
+  50% {
+    transform: translate(2vw, 2vh); /* Movimiento muy sutil */
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
 
   /* Media queries para mejorar la visualización en dispositivos móviles */
   @media (max-width: 768px) {
@@ -134,3 +128,15 @@
 
 </body>
 </html>
+<script>
+  window.onload = function() {
+  const lights = document.querySelectorAll('.light');
+  const animations = ['moveSlow1 20s infinite alternate', 'moveSlow2 22s infinite alternate', 'moveSlow3 18s infinite alternate'];
+
+  lights.forEach(light => {
+    const animation = animations[Math.floor(Math.random() * animations.length)];
+    light.style.animation += `, ${animation}`;
+  });
+};
+
+</script>
