@@ -5,18 +5,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TRIMATICA Intro</title>
 <style>
-  @keyframes fadeInOutBlur {
-    0%, 100% {
+  @keyframes fadeInBlurToSharp {
+    0% {
       opacity: 0;
+      filter: blur(12px); /* Comienza más desenfocado */
+    }
+    30% {
+      opacity: 0.5;
       filter: blur(8px);
     }
-    50% {
+    60% {
       opacity: 1;
-      filter: blur(0);
+      filter: blur(4px);
+    }
+    80% {
+      filter: blur(0); /* Totalmente nítido */
+    }
+    100% {
+      opacity: 0; /* Desaparece */
     }
   }
 
   body {
+    animation: fadeInBlurToSharp 10s ease forwards;
     margin: 0;
     display: flex;
     justify-content: center;
@@ -27,7 +38,6 @@
   }
 
   .intro {
-    animation: fadeInOutBlur 10s ease forwards;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,13 +72,7 @@
     border-right: 100px solid transparent; /* Más grande */
     border-bottom: 200px solid; /* Ajusta el color en JavaScript */
     opacity: 0.1; /* Mantén la transparencia */
-    animation: moveSlow 30s infinite alternate, fadeOut 1s ease 9s forwards; /* Ajusta para desvanecerse con el logo */
-  }
-
-  @keyframes fadeOut {
-    to {
-      opacity: 0;
-    }
+    animation: moveSlow 30s infinite alternate; /* Solo movimiento, sin desvanecimiento */
   }
 
   @keyframes moveSlow {
@@ -80,21 +84,6 @@
     }
     100% {
       transform: translate(0, 0);
-    }
-  }
-
-  /* Media queries para dispositivos móviles */
-  @media (max-width: 768px) {
-    .intro img {
-      max-width: 85%;
-      max-height: 45vh;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .intro img {
-      max-width: 100%;
-      max-height: 50vh;
     }
   }
 </style>
