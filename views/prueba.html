@@ -5,29 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TRIMATICA Intro</title>
 <style>
-  @keyframes fadeInBlurToSharp {
-    0% {
-      opacity: 0;
-      filter: blur(12px);
-    }
-    30% {
-      opacity: 0.5;
-      filter: blur(8px);
-    }
-    60% {
-      opacity: 1;
-      filter: blur(4px);
-    }
-    80% {
-      filter: blur(0);
-    }
-    100% {
-      opacity: 0;
-    }
-  }
-
   body {
-    animation: fadeInBlurToSharp 10s ease forwards;
     margin: 0;
     display: flex;
     justify-content: center;
@@ -41,27 +19,27 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
+    position: relative; /* Cambiado a relative para contener los triángulos dentro de .intro */
+    width: 100%;
+    height: 100vh;
   }
 
   .intro img {
     max-width: 100%;
     max-height: 60vh;
     width: auto;
+    z-index: 2; /* Asegúrate de que el logo esté encima de los triángulos */
   }
 
   .lights-container {
     position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1;
-    pointer-events: none;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .light {
@@ -70,19 +48,10 @@
     height: 0;
     border-left: 50px solid transparent;
     border-right: 50px solid transparent;
-    border-bottom: 100px solid;
-    opacity: 0.3; /* Ajusta para visibilidad */
-    animation: rotateAroundLogo 60s linear infinite; /* Tiempo y tipo de animación ajustados para movimiento lento y constante */
+    border-bottom: 100px solid; /* El color se asigna en JavaScript */
+    opacity: 0.5; /* Ajusta para visibilidad */
   }
 
-  @keyframes rotateAroundLogo {
-    from {
-      transform: rotate(0deg) translateX(300px) rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg) translateX(300px) rotate(-360deg);
-    }
-  }
 </style>
 </head>
 <body>
@@ -96,17 +65,27 @@
 window.onload = function() {
   const lightsContainer = document.querySelector('.lights-container');
   const lightsCount = 70;
+  const radius = 250; // Radio de la circunferencia alrededor del logo
 
   for (let i = 0; i < lightsCount; i++) {
     const light = document.createElement('div');
     light.classList.add('light');
-    light.style.top = '50%';
-    light.style.left = '50%';
-    light.style.transformOrigin = 'top left';
-    light.style.position = 'absolute';
+    const angle = (i / lightsCount) * 2 * Math.PI; // Ángulo para distribuir los triángulos
+    const x = radius * Math.cos(angle) + 'px';
+    const y = radius * Math.sin(angle) + 'px';
+    light.style.transform = `translate(${x}, ${y})`;
     const colors = ['#FFD700', '#FF8C00', '#1E90FF', '#32CD32', '#DC143C', '#4B0082'];
-    light.style.borderBottomColor = colors[Math.floor(Math.random() * colors.length)];
+    light.style.borderBottomColor = colors[i % colors.length];
     lightsContainer.appendChild(light);
+
+    // Animación para girar alrededor del logo
+    light.animate([
+      { transform: `translate(${x}, ${y}) rotate(0deg)` },
+      { transform: `translate(${x}, ${y}) rotate(360deg)` }
+    ], {
+      duration: 30000, // 30 segundos para una rotación completa
+      iterations: Infinity
+    });
   }
 };
 </script>
