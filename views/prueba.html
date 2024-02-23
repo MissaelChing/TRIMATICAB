@@ -55,15 +55,15 @@
   }
 
   .light {
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-left: 150px solid transparent;
-    border-right: 150px solid transparent;
-    border-bottom: 300px solid; /* Define un color aquí o en el estilo en línea */
-   opacity: 0.1; /* Ajusta para una mayor transparencia */
-  animation: growAndFade 5s infinite alternate, fadeOut 2s ease 8s forwards, moveSlow 20s infinite alternate;
-  }
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent; /* Ajusta según el tamaño deseado */
+  border-right: 50px solid transparent;
+  border-bottom: 100px solid; /* Define un color aquí o en el estilo en línea */
+  opacity: 0.1; /* Ajusta para una mayor transparencia */
+}
+
 
   @keyframes growAndFade {
     0% {
@@ -115,13 +115,7 @@
 </head>
 <body>
 
-<div class="lights-container">
-  <!-- Define tus luces aquí con estilos en línea para la posición y el color -->
-  <div class="light" style="top: 10%; left: 20%; border-bottom-color: #FFD700;"></div>
-  <div class="light" style="top: 30%; left: 40%; border-bottom-color: #FF8C00;"></div>
-  <!-- Agrega más luces según sea necesario -->
-</div>
-
+<div class="lights-container"></div>
 <div class="intro" id="trimaticaLogo">
   <img src="../img/TRIMATICAB.png" alt="TRIMATICA Logo" />
 </div>
@@ -129,14 +123,37 @@
 </body>
 </html>
 <script>
-  window.onload = function() {
-  const lights = document.querySelectorAll('.light');
-  const animations = ['moveSlow1 20s infinite alternate', 'moveSlow2 22s infinite alternate', 'moveSlow3 18s infinite alternate'];
+window.onload = function() {
+  const lightsContainer = document.querySelector('.lights-container');
+  const lightsCount = 70;
 
-  lights.forEach(light => {
-    const animation = animations[Math.floor(Math.random() * animations.length)];
-    light.style.animation += `, ${animation}`;
-  });
+  for (let i = 0; i < lightsCount; i++) {
+    const light = document.createElement('div');
+    light.classList.add('light');
+    // Posiciona los triángulos alrededor del logo, ajustando su posición
+    light.style.top = `${Math.random() * 100}%`;
+    light.style.left = `${Math.random() * 100}%`;
+    // Aplica un color aleatorio o fijo, según prefieras
+    const colors = ['#FFD700', '#FF8C00', '#1E90FF', '#32CD32', '#DC143C', '#4B0082'];
+    light.style.borderBottomColor = colors[Math.floor(Math.random() * colors.length)];
+    lightsContainer.appendChild(light);
+
+    // Aplica animación de movimiento lento y aleatorio
+    moveLight(light);
+  }
+
+  function moveLight(light) {
+    const duration = Math.random() * 5 + 10; // Duración entre 10 y 15 segundos
+    const keyframes = [
+      { transform: 'translate(0, 0)' },
+      { transform: `translate(${Math.random() * 20 - 10}px, ${Math.random() * 20 - 10}px)` } // Mueve en un rango de -10px a +10px
+    ];
+    light.animate(keyframes, {
+      duration: duration * 1000,
+      iterations: Infinity,
+      direction: 'alternate'
+    });
+  }
 };
 
 </script>
