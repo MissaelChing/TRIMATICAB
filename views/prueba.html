@@ -26,7 +26,7 @@
     overflow: hidden;
   }
 
-.intro {
+  .intro {
     animation: fadeInOutBlur 10s ease forwards;
     display: flex;
     justify-content: center;
@@ -43,9 +43,9 @@
     max-height: 60vh;
     width: auto;
   }
-  
+
   .lights-container {
-    position: relative;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -54,92 +54,69 @@
     pointer-events: none;
   }
 
-.light {
+  .light {
     position: absolute;
     width: 0;
     height: 0;
-    border-left: 100px solid transparent; /* Aumenta el tamaño del borde izquierdo */
-    border-right: 100px solid transparent; /* Aumenta el tamaño del borde derecho */
-    border-bottom: 200px solid white; 
-    opacity: 0;
-    animation: growAndFade 5s infinite alternate;
-}
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-bottom: 300px solid; /* Debes definir un color aquí o en el estilo en línea */
+    opacity: 0.3;
+    animation: moveAndFade 10s ease forwards, growAndFade 5s infinite alternate;
+  }
 
-@keyframes growAndFade {
+  @keyframes moveAndFade {
     0% {
-        transform: scale(0.5); /* Empieza a mitad de tamaño para un efecto de crecimiento */
-        opacity: 0.5;
-        filter: blur(8px); /* Comienza con un desenfoque fuerte */
+      transform: translate(0, 0);
     }
     100% {
-        transform: scale(1); /* Crece a tamaño completo */
-        opacity: 1;
-        filter: blur(15px); /* Aumenta el desenfoque para un efecto más difuminado al final */
+      transform: translate(50vw, 50vh); /* Ajusta según sea necesario */
+      opacity: 0;
     }
-}
-
-
-  @keyframes flicker {
-    0%, 100% { opacity: 0; }
-    50% { opacity: 0.6; } /* Opacidad reducida para un efecto más sutil */
   }
 
-/* Media queries para mejorar la visualización en dispositivos móviles */
-@media (max-width: 768px) {
-  .intro img {
-    max-width: 85%; /* Aumenta más el tamaño del logo en pantallas medianas */
-    max-height: 45vh;
+  @keyframes growAndFade {
+    0% {
+      transform: scale(0.5);
+      opacity: 0.5;
+      filter: blur(4px);
+    }
+    100% {
+      transform: scale(1);
+      opacity: 0.8; /* Aumenta para menos transparencia al final */
+      filter: blur(2px);
+    }
   }
-}
 
-@media (max-width: 480px) {
-  .intro img {
-    max-width: 100%; /* Hace que el logo ocupe la mayor parte de la pantalla en dispositivos muy pequeños */
-    max-height: 50vh;
+  /* Media queries para mejorar la visualización en dispositivos móviles */
+  @media (max-width: 768px) {
+    .intro img {
+      max-width: 85%;
+      max-height: 45vh;
+    }
   }
-}
+
+  @media (max-width: 480px) {
+    .intro img {
+      max-width: 100%;
+      max-height: 50vh;
+    }
+  }
 
 </style>
-
 </head>
 <body>
 
 <div class="lights-container">
+  <!-- Define tus luces aquí con estilos en línea para la posición y el color -->
   <div class="light" style="top: 10%; left: 20%; border-bottom-color: #FFD700;"></div>
   <div class="light" style="top: 30%; left: 40%; border-bottom-color: #FF8C00;"></div>
-  <!-- Agrega más divs según la cantidad de luces que desees -->
+  <!-- Agrega más luces según sea necesario -->
 </div>
-  <div class="intro" id="trimaticaLogo">
+
+<div class="intro" id="trimaticaLogo">
   <img src="../img/TRIMATICAB.png" alt="TRIMATICA Logo" />
 </div>
-
-<script>
-  window.onload = function() {
-    const colors = ['#FFD700', '#FF8C00', '#1E90FF', '#32CD32', '#DC143C', '#4B0082'];
-
-    function generateLights() {
-        const lightsContainer = document.querySelector('.lights-container');
-        const lightsCount = window.innerWidth <= 768 ? 10 : 70;
-
-        for (let i = 0; i < lightsCount; i++) {
-            const light = document.createElement('div');
-            light.classList.add('light');
-            light.style.top = `${Math.random() * 100}%`;
-            light.style.left = `${Math.random() * 100}%`;
-            const color = colors[Math.floor(Math.random() * colors.length)];
-            light.style.borderBottomColor = color; // Aplicar color aleatorio
-            light.style.animationDelay = `${Math.random() * 5}s`;
-            light.style.animationDuration = `${Math.random() * 5 + 5}s`;
-            lightsContainer.appendChild(light);
-        }
-    }
-
-    generateLights();
-};
-
-</script>
-
-
 
 </body>
 </html>
