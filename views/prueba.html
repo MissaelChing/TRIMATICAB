@@ -86,6 +86,13 @@
       transform: translate(0, 0);
     }
   }
+  @media (max-width: 768px) {
+    .light {
+      border-left: 50px solid transparent; /* Más pequeño */
+      border-right: 50px solid transparent; /* Más pequeño */
+      border-bottom: 100px solid; /* Ajusta el color en JavaScript */
+    }
+  }
 </style>
 </head>
 <body>
@@ -98,8 +105,17 @@
 <script>
 window.onload = function() {
   const lightsContainer = document.querySelector('.lights-container');
-  const lightsCount = 70;
-
+  const lightsCount = window.innerWidth <= 768 ? 10 : 70;
+  for (let i = 0; i < lightsCount; i++) {
+    const light = document.createElement('div');
+    light.classList.add('light');
+    light.style.top = `${Math.random() * 100}%`;
+    light.style.left = `${Math.random() * 100}%`;
+    const colors = ['#FFD700', '#FF8C00', '#1E90FF', '#32CD32', '#DC143C', '#4B0082'];
+    light.style.borderBottomColor = colors[Math.floor(Math.random() * colors.length)];
+    lightsContainer.appendChild(light);
+  }
+};
   for (let i = 0; i < lightsCount; i++) {
     const light = document.createElement('div');
     light.classList.add('light');
