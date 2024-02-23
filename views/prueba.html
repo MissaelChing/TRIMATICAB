@@ -8,7 +8,7 @@
   @keyframes fadeInBlurToSharp {
     0% {
       opacity: 0;
-      filter: blur(12px); /* Comienza más desenfocado */
+      filter: blur(12px);
     }
     30% {
       opacity: 0.5;
@@ -19,10 +19,10 @@
       filter: blur(4px);
     }
     80% {
-      filter: blur(0); /* Totalmente nítido */
+      filter: blur(0);
     }
     100% {
-      opacity: 0; /* Desaparece */
+      opacity: 0;
     }
   }
 
@@ -68,22 +68,19 @@
     position: absolute;
     width: 0;
     height: 0;
-    border-left: 100px solid transparent; /* Más grande */
-    border-right: 100px solid transparent; /* Más grande */
-    border-bottom: 200px solid; /* Ajusta el color en JavaScript */
-    opacity: 0.1; /* Mantén la transparencia */
-    animation: moveSlow 30s infinite alternate; /* Solo movimiento, sin desvanecimiento */
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 100px solid rgba(255, 255, 255, 0.3); /* Transparencia para el efecto de luz */
+    box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.5); /* Efecto de brillo */
+    animation: moveSlow 30s infinite alternate;
   }
 
   @keyframes moveSlow {
-    0% {
+    0%, 100% {
       transform: translate(0, 0);
     }
     50% {
-      transform: translate(2vw, 2vh); /* Muy sutil */
-    }
-    100% {
-      transform: translate(0, 0);
+      transform: translate(5vw, 5vh);
     }
   }
 </style>
