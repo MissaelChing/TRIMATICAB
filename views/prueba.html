@@ -61,8 +61,8 @@
     border-left: 150px solid transparent;
     border-right: 150px solid transparent;
     border-bottom: 300px solid; /* Define un color aquí o en el estilo en línea */
-    opacity: 0.3;
-    animation: growAndFade 5s infinite alternate, fadeOut 2s ease 8s forwards; /* Comienza a desvanecerse hacia el final de la animación del logo */
+    opacity: 0.8; /* Aumentado para menos transparencia */
+    animation: growAndFade 5s infinite alternate, fadeOut 2s ease 8s forwards, move 10s infinite alternate;
   }
 
   @keyframes growAndFade {
@@ -73,7 +73,7 @@
     }
     100% {
       transform: scale(1);
-      opacity: 0.8;
+      opacity: 0.8; /* Mantenido para coherencia con la opacidad inicial */
       filter: blur(2px);
     }
   }
@@ -81,6 +81,24 @@
   @keyframes fadeOut {
     to {
       opacity: 0; /* Desvanecer completamente */
+    }
+  }
+
+  @keyframes move {
+    0% {
+      transform: translate(0, 0);
+    }
+    25% {
+      transform: translate(5vw, 10vh);
+    }
+    50% {
+      transform: translate(10vw, 0vh);
+    }
+    75% {
+      transform: translate(-5vw, -10vh);
+    }
+    100% {
+      transform: translate(0, 0);
     }
   }
 
