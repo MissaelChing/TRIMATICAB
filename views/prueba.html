@@ -55,48 +55,35 @@
   }
 
   .light {
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-left: 50px solid transparent; /* Ajusta según el tamaño deseado */
-  border-right: 50px solid transparent;
-  border-bottom: 100px solid; /* Define un color aquí o en el estilo en línea */
-  opacity: 0.1; /* Ajusta para una mayor transparencia */
-}
-
-
-  @keyframes growAndFade {
-    0% {
-      transform: scale(0.5);
-      opacity: 0.5;
-      filter: blur(4px);
-    }
-    100% {
-      transform: scale(1);
-      opacity: 0.8; /* Mantenido para coherencia con la opacidad inicial */
-      filter: blur(2px);
-    }
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 100px solid transparent; /* Más grande */
+    border-right: 100px solid transparent; /* Más grande */
+    border-bottom: 200px solid; /* Ajusta el color en JavaScript */
+    opacity: 0.1; /* Mantén la transparencia */
+    animation: moveSlow 30s infinite alternate, fadeOut 1s ease 9s forwards; /* Ajusta para desvanecerse con el logo */
   }
 
   @keyframes fadeOut {
     to {
-      opacity: 0; /* Desvanecer completamente */
+      opacity: 0;
     }
   }
 
-@keyframes moveSlow {
-  0% {
-    transform: translate(0, 0);
+  @keyframes moveSlow {
+    0% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(2vw, 2vh); /* Muy sutil */
+    }
+    100% {
+      transform: translate(0, 0);
+    }
   }
-  50% {
-    transform: translate(2vw, 2vh); /* Movimiento muy sutil */
-  }
-  100% {
-    transform: translate(0, 0);
-  }
-}
 
-  /* Media queries para mejorar la visualización en dispositivos móviles */
+  /* Media queries para dispositivos móviles */
   @media (max-width: 768px) {
     .intro img {
       max-width: 85%;
@@ -110,7 +97,6 @@
       max-height: 50vh;
     }
   }
-
 </style>
 </head>
 <body>
@@ -120,8 +106,6 @@
   <img src="../img/TRIMATICAB.png" alt="TRIMATICA Logo" />
 </div>
 
-</body>
-</html>
 <script>
 window.onload = function() {
   const lightsContainer = document.querySelector('.lights-container');
@@ -130,30 +114,14 @@ window.onload = function() {
   for (let i = 0; i < lightsCount; i++) {
     const light = document.createElement('div');
     light.classList.add('light');
-    // Posiciona los triángulos alrededor del logo, ajustando su posición
     light.style.top = `${Math.random() * 100}%`;
     light.style.left = `${Math.random() * 100}%`;
-    // Aplica un color aleatorio o fijo, según prefieras
     const colors = ['#FFD700', '#FF8C00', '#1E90FF', '#32CD32', '#DC143C', '#4B0082'];
     light.style.borderBottomColor = colors[Math.floor(Math.random() * colors.length)];
     lightsContainer.appendChild(light);
-
-    // Aplica animación de movimiento lento y aleatorio
-    moveLight(light);
-  }
-
-  function moveLight(light) {
-    const duration = Math.random() * 5 + 10; // Duración entre 10 y 15 segundos
-    const keyframes = [
-      { transform: 'translate(0, 0)' },
-      { transform: `translate(${Math.random() * 20 - 10}px, ${Math.random() * 20 - 10}px)` } // Mueve en un rango de -10px a +10px
-    ];
-    light.animate(keyframes, {
-      duration: duration * 1000,
-      iterations: Infinity,
-      direction: 'alternate'
-    });
   }
 };
-
 </script>
+
+</body>
+</html>
