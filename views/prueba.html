@@ -131,7 +131,7 @@ window.onload = function() {
         if (i < triangleCount) {
             const triangle = document.createElement('div');
             triangle.classList.add('triangle');
-            triangle.style.borderBottomColor = `rgba(255,255,255,${Math.random() * 0.5})`;
+            triangle.style.borderBottomColor = getRandomColor();
             triangle.style.top = `${Math.random() * 100}%`;
             triangle.style.left = `${Math.random() * 100}%`;
             lightsContainer.appendChild(triangle);
