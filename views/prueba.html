@@ -55,25 +55,42 @@
   }
 
   .lights-container {
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
     width: 100%;
-    height: 100%;
-    z-index: 1;
-    pointer-events: none;
-  }
-
-  .light {
+    height: 100vh;
+    overflow: hidden;
+}
+.triangle {
     position: absolute;
     width: 0;
     height: 0;
-    border-left: 100px solid transparent; /* Más grande */
-    border-right: 100px solid transparent; /* Más grande */
-    border-bottom: 200px solid; /* Ajusta el color en JavaScript */
-    opacity: 0.1; /* Mantén la transparencia */
-    animation: moveSlow 30s infinite alternate; /* Solo movimiento, sin desvanecimiento */
-  }
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 60px solid rgba(255,255,255,0.3);
+    opacity: 0.5;
+    filter: blur(2px);
+}
+
+
+.light {
+    position: absolute;
+    width: 250px; /* Tamaño de la luz aumentado */
+    height: 250px; /* Tamaño de la luz aumentado */
+    background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.2) 80%, rgba(255,255,255,0) 100%); /* Gradiente para efecto de luz */
+    border-radius: 50%; /* Mantiene el div completamente circular */
+    filter: blur(20px); /* Aumenta el desenfoque para adaptarse al tamaño mayor */
+    opacity: 0.6; /* La opacidad se mantiene para suavizar el brillo */
+    animation: moveSlow 30s infinite alternate; /* La animación se mantiene igual */
+}
+
+@media (max-width: 768px) {
+    .light {
+      width: 60px; /* Tamaño aumentado para pantallas más pequeñas */
+      height: 60px; /* Tamaño aumentado para pantallas más pequeñas */
+      filter: blur(15px); /* Ajusta el desenfoque para el nuevo tamaño */
+    }
+}
+
 
   @keyframes moveSlow {
     0% {
@@ -104,18 +121,38 @@
 
 <script>
 window.onload = function() {
-  const lightsContainer = document.querySelector('.lights-container');
-  const lightsCount = window.innerWidth <= 768 ? 10 : 70;
-  for (let i = 0; i < lightsCount; i++) {
-    const light = document.createElement('div');
-    light.classList.add('light');
-    light.style.top = `${Math.random() * 100}%`;
-    light.style.left = `${Math.random() * 100}%`;
-    const colors = ['#FFD700', '#FF8C00', '#1E90FF', '#32CD32', '#DC143C', '#4B0082'];
-    light.style.borderBottomColor = colors[Math.floor(Math.random() * colors.length)];
-    lightsContainer.appendChild(light);
-  }
+    const lightsContainer = document.querySelector('.lights-container');
+    // Definir el número total de elementos a crear
+    const totalElements = 60; // Ajusta a tu preferencia
+    const triangleCount = 10; // 10 triángulos como especificado
+
+    for (let i = 0; i < totalElements; i++) {
+        // Primero, crear 10 triángulos
+        if (i < triangleCount) {
+            const triangle = document.createElement('div');
+            triangle.classList.add('triangle');
+            triangle.style.borderBottomColor = `rgba(255,255,255,${Math.random() * 0.5})`;
+            triangle.style.top = `${Math.random() * 100}%`;
+            triangle.style.left = `${Math.random() * 100}%`;
+            lightsContainer.appendChild(triangle);
+        } else {
+            // Luego, crear luces hasta alcanzar el total de elementos
+            const light = document.createElement('div');
+            light.classList.add('light');
+            light.style.background = `radial-gradient(circle, ${getRandomColor()} 0%, transparent 70%)`;
+            light.style.top = `${Math.random() * 100}%`;
+            light.style.left = `${Math.random() * 100}%`;
+            lightsContainer.appendChild(light);
+        }
+    }
 };
+
+function getRandomColor() {
+    const colors = ['#FFD700', '#FF8C00', '#1E90FF', '#32CD32', '#DC143C', '#4B0082'];
+    return colors[Math.floor(Math.random() * colors.length)];
+}
+
+
 </script>
 
 </body>
