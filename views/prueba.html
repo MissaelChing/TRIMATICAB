@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TRIMATICA Intro</title>
 <style>
- @keyframes fadeInBlurToSharp {
+@keyframes fadeInBlurToSharp {
   0% {
     opacity: 0;
     filter: blur(12px); /* Comienza más desenfocado */
@@ -24,10 +24,15 @@
   50% {
     filter: blur(0); /* Totalmente nítido */
   }
+  80% {
+    filter: blur(0); /* Se mantiene nítido hasta el 80% de la duración */
+    opacity: 1; /* Mantiene la opacidad completa */
+  }
   100% {
     opacity: 0; /* Desaparece */
   }
 }
+
   body {
     animation: fadeInBlurToSharp 10s ease forwards;
     margin: 0;
