@@ -5,27 +5,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TRIMATICA Intro</title>
 <style>
-  @keyframes fadeInBlurToSharp {
-    0% {
-      opacity: 0;
-      filter: blur(12px); /* Comienza más desenfocado */
-    }
-    30% {
-      opacity: 0.5;
-      filter: blur(8px);
-    }
-    60% {
-      opacity: 1;
-      filter: blur(4px);
-    }
-    80% {
-      filter: blur(0); /* Totalmente nítido */
-    }
-    100% {
-      opacity: 0; /* Desaparece */
-    }
+ @keyframes fadeInBlurToSharp {
+  0% {
+    opacity: 0;
+    filter: blur(12px); /* Comienza más desenfocado */
   }
-
+  20% {
+    opacity: 0.5;
+    filter: blur(8px);
+  }
+  30% {
+    opacity: 1;
+    filter: blur(2px);
+  }
+  40% {
+    filter: blur(0.5px); /* Comienza a estar nítido más rápidamente */
+  }
+  50% {
+    filter: blur(0); /* Totalmente nítido */
+  }
+  100% {
+    opacity: 0; /* Desaparece */
+  }
+}
   body {
     animation: fadeInBlurToSharp 10s ease forwards;
     margin: 0;
@@ -123,7 +125,7 @@
 window.onload = function() {
     const lightsContainer = document.querySelector('.lights-container');
     // Definir el número total de elementos a crear
-    const totalElements = 60; // Ajusta a tu preferencia
+    const totalElements = 80; // Ajusta a tu preferencia
     const triangleCount = 10; // 10 triángulos como especificado
 
     for (let i = 0; i < totalElements; i++) {
@@ -146,13 +148,10 @@ window.onload = function() {
         }
     }
 };
-
 function getRandomColor() {
     const colors = ['#FFD700', '#FF8C00', '#1E90FF', '#32CD32', '#DC143C', '#4B0082'];
     return colors[Math.floor(Math.random() * colors.length)];
 }
-
-
 </script>
 
 </body>
