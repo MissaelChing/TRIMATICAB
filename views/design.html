@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRIMATICA | Home</title>
+    <link rel="stylesheet" href="../css/estilos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../fontawesome/css/all.css">
+    <link rel="icon" href="../img/3B.ico" type="image/x-icon">
+
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a href="#"><img src="../img/3B.ico" alt="Open Book" style="width: 30px; height: auto;">TRIMATICA</a>
+        </div>
+        <div class="navbar-icons">
+            <a href="javascript:void(0);" class="icon-sandwich" onclick="toggleMenu()">☰</a>
+        </div>
+    </nav>
+    <!-- Contenido principal -->
+    <div class="main-content">
+        <div class="galeria-section" id="logotipos">
+            <h2>Logotipos</h2>
+            <div class="galeria-container">
+                <div class="img-wrap">
+                    <img src="https://res.cloudinary.com/dbixvufby/image/upload/f_auto,q_auto/v1/trimatica/drx3hrnff6ipxavppsgc" alt="Logo 1" class="gallery-img">
+                </div>
+                <div class="img-wrap">
+                    <img src="https://res.cloudinary.com/dbixvufby/image/upload/f_auto,q_auto/v1/trimatica/drx3hrnff6ipxavppsgc" alt="Logo 2" class="gallery-img">
+                </div>            </div>
+        </div>
+        
+        <div class="galeria-section" id="publicidad">
+            <h2>Carteles y Publicidad</h2>
+            <div class="galeria-container">
+                <div class="img-wrap">
+                    <img src="https://res.cloudinary.com/dbixvufby/image/upload/f_auto,q_auto/v1/trimatica/drx3hrnff6ipxavppsgc" alt="Logo 1" class="gallery-img">
+                </div>
+                <div class="img-wrap">
+                    <img src="https://res.cloudinary.com/dbixvufby/image/upload/f_auto,q_auto/v1/trimatica/drx3hrnff6ipxavppsgc" alt="Logo 2" class="gallery-img">
+                </div>            </div>
+        </div>
+        
+        <div class="galeria-section" id="eventos">
+            <h2>Eventos Sociales</h2>
+            <div class="galeria-container">
+                <div class="img-wrap">
+                    <img src="https://res.cloudinary.com/dbixvufby/image/upload/f_auto,q_auto/v1/trimatica/drx3hrnff6ipxavppsgc" alt="Logo 1" class="gallery-img">
+                </div>
+                <div class="img-wrap">
+                    <img src="https://res.cloudinary.com/dbixvufby/image/upload/f_auto,q_auto/v1/trimatica/drx3hrnff6ipxavppsgc" alt="Logo 2" class="gallery-img">
+                </div>            </div>
+        </div>
+        
+        <!-- El modal para visualizar las imágenes -->
+       <!-- Dentro del modal -->
+       <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
+    </div>
+    
+   
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-section">
+            <a href="https://www.facebook.com/people/Trim%C3%A1tica/100087115123309/?mibextid=LQQJ4d" class="social-icon"> <i class="fab fa-facebook fa-2x"></i></a>
+            <a href="https://www.youtube.com/channel/UC5oYuIuP0mR7EqaA3ukv-aA" class="social-icon"><i class="fab fa-youtube fa-2x"></i></a>
+            <a href="https://www.instagram.com/trimaticaec/" class="social-icon"><i class="fab fa-instagram fa-2x"></i></a>
+            <a href="https://www.behance.net/trimaticaec" class="social-icon"><i class="fa-brands fa-behance fa-2x"></i></a>
+        </div>
+        <div class="footer-section">
+            <!-- Sección vacía -->
+        </div>
+        <div class="footer-section">
+            <!-- Sección con texto de derechos de autor -->
+            <p>© 2024 TRIMATICAB. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f3f3f3;
+    }
+    .galeria-section {
+        padding: 20px;
+    }
+    
+    .galeria-section h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+        color: #333;
+    }
+    
+    .galeria-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 10px;
+        padding: 0;
+    }
+    
+    .img-wrap {
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+    cursor: pointer;
+    opacity: 0; /* Inicialmente ocultamos las imágenes */
+    transform: translateY(-100px) rotate(-20deg); /* Las movemos hacia arriba y las rotamos ligeramente */
+    animation: distribute 0.5s ease forwards; /* Agregar una animación al cargar */
+}
+
+@keyframes distribute {
+    0% {
+        transform: translateY(-100px) rotate(-20deg); /* Movemos hacia arriba y rotamos ligeramente */
+        opacity: 0; /* Inicialmente están ocultas */
+    }
+    100% {
+        transform: translateY(0) rotate(0deg); /* Movemos hacia abajo y rotamos a posición normal */
+        opacity: 1; /* Mostramos la imagen */
+    }
+}
+
+
+    .img-wrap img {
+        width: 100%;
+        height: auto;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        object-fit: cover; /* esto asegurará que las imágenes cubran el div sin distorsionarse */
+    }
+    
+    .img-wrap:hover img {
+        opacity: 0.7;
+        transform: scale(1.1);
+    }
+    
+    
+    
+    .modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+.modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow-y: auto; /* Permite desplazamiento si el contenido es largo */
+            padding-top: 50px;
+        }
+
+        /* Estilos para la imagen dentro del modal */
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: auto; /* Se ajustará al tamaño de la imagen */
+            height:  auto;
+        }
+.close {
+    color: #fff;
+    position: fixed; /* Cambiado a fixed para que siempre esté en la esquina superior derecha de la ventana */
+    top: 20px;
+    right: 30px;
+    font-size: 35px;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.close:hover,
+.close:focus {
+    color: #999;
+    cursor: pointer;
+}
+
+    
+    @media (max-width: 768px) {
+        .galeria-container {
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        }
+    }
+    
+    /* Estilos para ajustar la imagen dentro del modal a pantalla completa */
+    #img01 {
+        width: 100%;
+        height: auto;
+    }
+    </style>
+    <div id="side-menu" class="side-nav">
+        <a href="javascript:void(0)" class="btn-close" onclick="closeMenu()">×</a>
+        <a href="../views/Home.html">Inicio</a>
+        <a href="../views/gallery.html">Video</a>
+        <a href="../views/gallery.html">Diseño Grafico</a>
+        <a href="../views/gallery.html">Galería</a>
+        <a href="../views/contactus.html">Contacto</a>
+    </div>
+    <script src="../js/script.js"></script>
+    <script>
+        // Obtén el modal
+        var modal = document.getElementById('myModal');
+        var modalImg = document.getElementById("img01");
+        var images = document.querySelectorAll('.img-wrap img');
+        images.forEach(img => {
+            img.onclick = function(){
+                modal.style.display = "block";
+                modalImg.src = this.src;
+            }
+        });
+        var span = document.getElementsByClassName("close")[0];
+        span.onclick = function() { 
+            modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+        </script>
+</body>
+
+</html>
