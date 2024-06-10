@@ -5,11 +5,118 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TRIMATICA | Galería</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/estilos.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../fontawesome/css/all.css">
     <link rel="icon" href="../img/3B.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f0f0; /* Color de fondo */
 
+        }
+        .collage {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .collage img {
+            width: calc(33.33% - 10px);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .collage img:hover {
+            transform: scale(1.05);
+        }
+
+        .lightbox {
+            position: fixed;
+            z-index: 1100;
+            /* Aumenta el z-index para asegurar que esté por encima del modal */
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        .lightbox img {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            /* Ajusta este valor según sea necesario */
+            max-height: 90vh;
+        }
+
+        .lightbox .close-btn {
+            position: absolute;
+            top: 50px;
+            right: 35px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .lightbox .close-btn:hover,
+        .lightbox .close-btn:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .info-popup {
+            display: none;
+            position: fixed;
+            z-index: 1060;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            max-width: 80%;
+            max-height: 90vh;
+        }
+
+        .popup-content {
+            display: flex;
+            align-items: center;
+        }
+
+        .popup-img {
+            max-width: 50%;
+            /* Ajusta el tamaño de la imagen a la izquierda */
+            margin-right: 20px;
+            /* Espacio entre la imagen y la información */
+        }
+
+        .info-popup.open {
+            z-index: 1070;
+            /* Asegura que el modal esté por encima de otras capas */
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Fondo oscuro semitransparente */
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .popup-info {
+            flex: 1;
+            /* La información ocupará el resto del espacio disponible */
+        }
+    </style>
 </head>
 
 <body>
@@ -21,61 +128,66 @@
             <a href="javascript:void(0);" class="icon-sandwich" onclick="toggleMenu()">☰</a>
         </div>
     </nav>
-    <div class="main-content">
-        <div class="gallery-container">
-            <h1>Galería</h1>
-            <div class="gallery">
-                <div class="gallery-item">
-                    <img src="https://res.cloudinary.com/dsqjghl7i/image/upload/v1709364543/tkzsmgjz59codlcxyzfk.jpg" onclick="openLightbox('https://res.cloudinary.com/dsqjghl7i/image/upload/v1709364543/tkzsmgjz59codlcxyzfk.jpg')" alt="Descripción">
-                    <div class="text">
-                        <h2>Catrina </h2>
-                        <p>2023 (serie)</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://res.cloudinary.com/dbixvufby/image/upload/f_auto,q_auto/v1/trimatica/jp0fovgqlqgchh4utm3c" onclick="openLightbox('https://res.cloudinary.com/dbixvufby/image/upload/f_auto,q_auto/v1/trimatica/jp0fovgqlqgchh4utm3c')" alt="Descripción">
-                    <div class="text">
-                        <h2>Stations of the Cross</h2>
-                        <p>2023 (serie)</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://res.cloudinary.com/dbixvufby/image/upload/f_auto,q_auto/v1/trimatica/vnklbbcfr7oow9xhya4v" onclick="openLightbox('https://res.cloudinary.com/dbixvufby/image/upload/f_auto,q_auto/v1/trimatica/vnklbbcfr7oow9xhya4v')" alt="Descripción">
-                    <div class="text">
-                        <h2>Stations of the Cross</h2>
-                        <p>2023 (serie)</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://res.cloudinary.com/dbixvufby/image/upload/f_auto,q_auto/v1/trimatica/vnklbbcfr7oow9xhya4v" onclick="openLightbox('https://res.cloudinary.com/dbixvufby/image/upload/f_auto,q_auto/v1/trimatica/vnklbbcfr7oow9xhya4v')" alt="Descripción">
-                    <div class="text">
-                        <h2>Stations of the Cross</h2>
-                        <p>2023 (serie)</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://res.cloudinary.com/dbixvufby/image/upload/f_auto,q_auto/v1/trimatica/fvs905n3nh8gmnvism40" onclick="openLightbox('https://res.cloudinary.com/dbixvufby/image/upload/f_auto,q_auto/v1/trimatica/fvs905n3nh8gmnvism40')" alt="Descripción">
-                    <div class="text">
-                        <h2>Stations of the Cross</h2>
-                        <p>2023 (serie)</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://res.cloudinary.com/dbixvufby/image/upload/f_auto,q_auto/v1/trimatica/drx3hrnff6ipxavppsgc"  onclick="openLightbox('https://res.cloudinary.com/dbixvufby/image/upload/f_auto,q_auto/v1/trimatica/drx3hrnff6ipxavppsgc')" alt="Descripción">
-                    <div class="text">
-                        <h2>Stations of the Cross</h2>
-                        <p>2023 (serie)</p>
-                    </div>
-                </div>
-                <!-- Repite el bloque .gallery-item para cada imagen -->
-            </div>
+    <div class="container my-5">
+        <h1 class="text-center mb-5">Galería</h1>
+        <h2 class="text-center">Teenage Dreams (Quinceañeras)</h2>
+        <br>
+        <div class="collage">
+            <img src="../img/quince/Adela xv-13.jpg" alt="Descripción" onclick="showInfo('Adela', 'XV (serie)', '../img/quince/Adela xv-13.jpg')">
+            <img src="../img/quince/Adela xv-1.jpg" alt="Descripción" onclick="showInfo('Emilia', '2023 (serie)', '../img/quince/EMILIA XV-12.JPG')">
+            <img src="../img/quince/Adela xv-12.jpg" alt="Descripción" onclick="showInfo('Adela', '2023 (serie)', '../img/quince/Adela xv-12.jpg')">
+            <img src="../img/quince/EMILIA XV-1.JPG" alt="Descripción" onclick="showInfo('Carol', '2023 (serie)', '../img/quince/XV Carol sesión-1.jpg')">
+            <img src="../img/quince/EMILIA XV-12.JPG" alt="Descripción" onclick="showInfo('Emilia', '2023 (serie)', '../img/quince/EMILIA XV-1.JPG')">
+            <img src="../img/quince/EMILIA XV-8.JPG" alt="Descripción" onclick="showInfo('Ana', '2023 (serie)', '../img/quince/Ana XV-1.jpg')">
+            <!-- Añade más imágenes al collage aquí -->
         </div>
+        <br>
+        <hr>
+        <h2 class="text-center">Editorial</h2>
+        <hr>
+        <div class="collage">
+            <img src="../img/editorial/DIEGO PURO DE CORAZÓN-1.jpg" alt="Descripción" onclick="showInfo('DIEGO', 'Editorial (serie) PURO DE CORAZÓN', '../img/editorial/DIEGO PURO DE CORAZÓN-1.jpg')">
+            <img src="../img/editorial/DIEGO PURO DE CORAZÓN-10.jpg" alt="Descripción" onclick="showInfo('DIEGO', 'Editorial (serie) PURO DE CORAZÓN', '../img/editorial/DIEGO PURO DE CORAZÓN-10.jpg')">
+            <img src="../img/editorial/DIEGO PURO DE CORAZÓN-6.jpg" alt="Descripción" onclick="showInfo('Adela', 'Editorial (serie) PURO DE CORAZÓN', '../img/editorial/DIEGO PURO DE CORAZÓN-6.jpg')">
+            <img src="../img/editorial/Morgana Love-3.jpg" alt="Descripción" onclick="showInfo('Morgana', 'Editorial (serie) Love', '../img/editorial/Morgana Love-3.jpg')">
+            <img src="../img/editorial/Morgana Love-6.jpg" alt="Descripción" onclick="showInfo('Morgana', 'Editorial (serie) Love', '../img/editorial/Morgana Love-6.jpg')">
+            <img src="../img/editorial/Morgana Love-8.jpg" alt="Descripción" onclick="showInfo('Morgana', 'Editorial (serie) Love', '../img/editorial/Morgana Love-8.jpg')">
+            <!-- Añade más imágenes al collage aquí -->
+        </div>
+        <br>
+        <hr>
+        <h2 class="text-center">Retrato</h2>
+        <hr>
+        <div class="collage">
+            <img src="../img/retrato/Alex Arrollo hotel morgana-1.jpg" alt="Descripción" onclick="showInfo('Adela', 'XV (serie)', '../img/quince/Adela xv-13.jpg')">
+            <img src="../img/retrato/Alex Arrollo hotel morgana-9.jpg" alt="Descripción" onclick="showInfo('Emilia', '2023 (serie)', '../img/quince/EMILIA XV-12.JPG')">
+            <img src="../img/retrato/Alex Arrollo hotel morgana-4.jpg" alt="Descripción" onclick="showInfo('Adela', '2023 (serie)', '../img/quince/Adela xv-12.jpg')">
+            <img src="../img/retrato/CARLITA SESIÓN-11.jpg" alt="Descripción" onclick="showInfo('Carol', '2023 (serie)', '../img/quince/XV Carol sesión-1.jpg')">
+            <img src="../img/retrato/CARLITA SESIÓN-6.jpg" alt="Descripción" onclick="showInfo('Ana', '2023 (serie)', '../img/quince/Ana XV-1.jpg')">
+            <img src="../img/retrato/CARLITA SESIÓN-2.jpg" alt="Descripción" onclick="showInfo('Emilia', '2023 (serie)', '../img/quince/EMILIA XV-1.JPG')">
+            <!-- Añade más imágenes al collage aquí -->
+        </div>
+
     </div>
-    <div id="lightbox" class="lightbox">
+
+    <div id="lightbox" class="lightbox" hidden>
         <span class="close-btn" onclick="closeLightbox()">&times;</span>
         <img id="lightbox-img" src="" alt="Imagen en lightbox">
     </div>
-    <!-- Footer -->
+
+    <div id="info-popup" class="info-popup">
+        <span class="close-btn" onclick="closeInfoPopup()">&times;</span>
+        <div class="popup-content">
+            <img id="popup-img" class="popup-img" src="" alt="Imagen del popup" onclick="openLightboxFromPopup()">
+            <div class="popup-info">
+                <h3 id="popup-title"></h3>
+                <p id="popup-description"></p>
+                <!-- Puedes agregar más información aquí si lo deseas -->
+            </div>
+        </div>
+    </div>
+
+
     <footer class="site-footer">
         <div class="footer-section">
             <a href="https://www.facebook.com/people/Trim%C3%A1tica/100087115123309/?mibextid=LQQJ4d"
@@ -96,16 +208,43 @@
         </div>
     </footer>
 
-
     <div id="side-menu" class="side-nav">
-        <a href="javascript:void(0)" class="btn-close" onclick="closeMenu()">×</a>
+        <a href="javascript:void(0)" class="btn-close" onclick="closeMenu()"></a>
         <a href="../views/Home.html">Inicio</a>
-        <a href="../views/gallery.html">Video</a>
+        <a href="../views/gallery.html">Galería fotográfica</a>
         <a href="../views/design.html">Diseño Grafico</a>
-        <a href="../views/gallery.html">Galería</a>
-        <a href="../views/contactus.html">Contacto</a>
+        <a href="../views/video.html">Video</a>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/script.js"></script>
+    <script>
+        function openLightbox(src) {
+            document.getElementById("lightbox").removeAttribute('hidden');
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox').style.display = 'block';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+
+        function showInfo(title, description, imgSrc) {
+            document.getElementById('popup-title').innerText = title;
+            document.getElementById('popup-description').innerText = description;
+            document.getElementById('popup-img').src = imgSrc;
+            document.getElementById('info-popup').style.display = 'block';
+        }
+
+        function closeInfoPopup() {
+            document.getElementById('info-popup').style.display = 'none';
+        }
+
+        function openLightboxFromPopup() {
+            const imgSrc = document.getElementById('popup-img').src;
+            openLightbox(imgSrc);
+        }
+    </script>
 </body>
 
 </html>
