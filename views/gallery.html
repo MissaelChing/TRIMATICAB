@@ -31,7 +31,15 @@
         .collage img:hover {
             transform: scale(1.05);
         }
-
+         .cerrar-btn {
+            position: absolute;
+            top: 50px;
+            right: 35px;
+            color: rgb(16, 16, 16);
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
         .lightbox {
             position: fixed;
             z-index: 1100;
@@ -176,7 +184,7 @@
     </div>
 
     <div id="info-popup" class="info-popup">
-        <span class="close-btn" onclick="closeInfoPopup()">&times;</span>
+        <span class="cerrar-btn" onclick="closeInfoPopup()">&times;</span>
         <div class="popup-content">
             <img id="popup-img" class="popup-img" src="" alt="Imagen del popup" onclick="openLightboxFromPopup()">
             <div class="popup-info">
